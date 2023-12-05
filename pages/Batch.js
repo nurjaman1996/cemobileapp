@@ -1,0 +1,165 @@
+import * as React from "react";
+import {
+  Text,
+  View,
+  Button,
+  SafeAreaView,
+  Image,
+  RefreshControl,
+  ActivityIndicator,
+  FlatList,
+  ScrollView,
+  Pressable,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+  TextInput,
+  Alert,
+} from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
+import axios from "axios";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import DropDownPicker from "react-native-dropdown-picker";
+import { BASE_URL } from "@env";
+
+const width = Dimensions.get("window").width;
+
+export default function BatchScreen({ navigation }) {
+  const [isLodaing, setisLodaing] = React.useState(true);
+  const [refreshing, setRefreshing] = React.useState(false);
+  const [DataBatch, setDataBatch] = React.useState([]);
+  const [SerachQuery, setSerachQuery] = React.useState("");
+
+  let itemsBatch = DataBatch.filter(
+    (item) =>
+      item.id_batch.toLowerCase().indexOf(SerachQuery.toLowerCase()) > -1
+  );
+
+  async function getDataBatch() {
+    try {
+      const res = await axios({
+        method: "get",
+        url: `http://139.180.130.182:4000/purchaseorder/getbatch`,
+      });
+      setDataBatch(res.data.data);
+      setisLodaing(false);
+      setRefreshing(false);
+    } catch (error) {
+      setisLodaing(false);
+      setRefreshing(false);
+      console.log(error);
+    }
+  }
+
+  async function deleteBatch(id_batch) {
+    try {
+      await axios({
+        method: "delete",
+        url: `http://139.180.130.182:4000/purchaseorder/deletebatch/${id_batch}`,
+      });
+
+      getDataBatch();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function onRefreshFunc() {
+    getDataBatch();
+  }
+
+  React.useEffect(() => {
+    setisLodaing(true);
+    getDataBatch();
+  }, []);
+
+  function itemProduct(item) {
+    return (
+      <View key={item.id} className="mt-2 px-2" style={{ width: width }}>
+        <View className="px-2 bg-white h-auto p-5 rounded-md flex flex-row items-center">
+          <View className="grow space-y-1">
+            <Text className="font-bold">{item.id_batch}</Text>
+            <Text>Tanggal Keberangkatan : {item.tanggal_batch}</Text>
+            <Text>Negara : {item.country}</Text>
+            <Text>Kota :{item.city}</Text>
+          </View>
+
+          <TouchableOpacity
+            className="bg-red-400 py-2 px-2 rounded-md"
+            onPress={() => {
+              Alert.alert(
+                `Delete Data`,
+                `Klik Delete untuk Hapus ${item.id_batch}`,
+                [
+                  {
+                    text: "Cancel",
+                  },
+                  { text: "Delete", onPress: () => deleteBatch(item.id_batch) },
+                ]
+              );
+            }}
+          >
+            <Text style={{ color: "white" }}>Delete Batch</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
+  return (
+    <SafeAreaView className="bg-white h-full">
+      <View className="mb-2 z-50 flex flex-row items-center p-4">
+        <View className="basis-5/6 bg-white">
+          <TextInput
+            value={SerachQuery}
+            placeholder="Cari Batch"
+            style={{
+              borderWidth: 1,
+              padding: 15,
+              borderRadius: 5,
+            }}
+            onChangeText={(e) => {
+              setSerachQuery(e);
+            }}
+          />
+        </View>
+
+        <View className="basis-1/6 flex flex-row justify-end">
+          <TouchableOpacity
+            onPress={() => navigation.navigate("AddBatch")}
+            className="aspect-square w-12 flex flex-row justify-center items-center pl-1 rounded-md bg-[#D13D3D]"
+          >
+            <Ionicons name={"add"} size={35} color={"white"} />
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {isLodaing ? (
+        <View className="h-full flex-1 items-center justify-center">
+          <ActivityIndicator />
+        </View>
+      ) : DataBatch.length < 1 ? (
+        <View className="grow flex flex-col justify-center items-center">
+          <Text>Data Belum Ada, Silahkan Input Data</Text>
+          <Button title="Refresh Data" onPress={onRefreshFunc} />
+        </View>
+      ) : (
+        <>
+          <FlatList
+            className=" bg-gray-50"
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefreshFunc}
+                tintColor="red"
+              />
+            }
+            keyExtractor={(item, index) => index.toString()}
+            data={itemsBatch}
+            renderItem={({ item }) => itemProduct(item)}
+          />
+        </>
+      )}
+    </SafeAreaView>
+  );
+}
