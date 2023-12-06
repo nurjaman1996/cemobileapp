@@ -71,7 +71,7 @@ function MainTab() {
               iconName = focused ? "folder" : "folder-outline";
             } else if (route.name === "Data PO") {
               iconName = focused ? "document" : "document-outline";
-            } else if (route.name === "Data Iventory") {
+            } else if (route.name === "Data Inventory") {
               iconName = focused ? "cube" : "cube-outline";
             } else if (route.name === "Settings") {
               iconName = focused ? "settings" : "settings-outline";
@@ -91,7 +91,7 @@ function MainTab() {
         />
 
         <Tab.Screen
-          name="Data Iventory"
+          name="Data Inventory"
           component={Iventory}
           options={{ headerShown: true }}
         />

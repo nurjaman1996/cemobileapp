@@ -99,7 +99,7 @@ export default function AddPo({ route, navigation }) {
         automaticallyAdjustKeyboardInsets={true}
         className="h-full"
       >
-        <View className="aspect-square rounded-b-md">
+        <View className="aspect-square rounded-b-md ">
           <Image
             source={{
               uri: `http://139.180.130.182:4000/assets/img/${dataDetails.item.images}`,
@@ -112,9 +112,9 @@ export default function AddPo({ route, navigation }) {
           />
         </View>
 
-        <View className="-mt-4 bg-red-500 w-[50%] mx-auto rounded-xl p-2 flex items-center">
-          <Text className="font-bold text-base text-white">
-            Total Stok :{" "}
+        <View className="-mt-5 bg-green-600 w-[50%] mx-auto rounded-3xl p-2 flex items-center">
+          <Text className="font-bold text-xl text-white">
+            Available Stock {" "}
             {Numbering.format(
               dataDetails.item.total_stok === null
                 ? 0
@@ -123,96 +123,110 @@ export default function AddPo({ route, navigation }) {
           </Text>
         </View>
 
-        <View className="mx-4 flex-row items-center h-auto border-b border-gray-300 py-2">
-          <View className="basis-3/4">
-            <Text
-              numberOfLines={2}
-              ellipsizeMode="tail"
-              className={`${
-                dataDetails.item.produk == "null"
+        <View className="border border-gray-300 border-b-0 rounded-t-3xl">
+          <View className="mx-4 flex-row items-center h-auto border-b border-gray-300 py-2  ">
+            <View className="basis-3/4">
+              <Text
+                numberOfLines={2}
+                ellipsizeMode="tail"
+                className={`${dataDetails.item.produk == "null"
                   ? "text-red-500"
                   : "text-[#2e2e2e]"
-              } font-bold text-sm`}
-            >
-              {dataDetails.item.produk == "null"
-                ? "Belum ada nama"
-                : dataDetails.item.produk}
-            </Text>
-            <Text className="font-bold text-xs text-red-500">
-              {dataDetails.item.id_produk}
+                  } font-bold text-xl `}
+              >
+                {dataDetails.item.produk == "null"
+                  ? "Belum ada nama"
+                  : dataDetails.item.produk}
+              </Text>
+              <Text className="font-medium text-xs text-red-500">
+                {dataDetails.item.id_produk}
+              </Text>
+              <Text className="font-bold text-xs">
+                {dataDetails.item.supplier}
+              </Text>
+            </View>
+
+            <Text className="basis-1/4 pt-1 font-bold text-md text-right">
+              {Rupiah.format(dataDetails.item.harga_jual)}{" "}
+              <Text className="text-xs  text-red-500">400Gr</Text>
             </Text>
           </View>
 
-          <Text className="basis-1/4 pt-1 font-bold text-base text-red-500 text-center">
-            {Rupiah.format(dataDetails.item.harga_jual)}
-          </Text>
+          <View className="flex flex-row mx-4 py-2 px-0 border-b  border-gray-300">
+            <View className="basis-1/2 flex flex-row items-start h-auto ">
+              <View className="basis-1/2 ">
+                {/* <Text className="text-black text-xs">
+                Supplier
+              </Text> */}
+                <Text className="text-black text-xs">
+                  Cost Kurs
+                </Text>
+                <Text className="text-black text-xs">
+                  Cost
+                </Text>
+                <Text className="text-black text-xs">
+                  Overhead
+                </Text>
+                {/* <Text className="text-black text-xs">
+                Selling Price
+              </Text> */}
+                <Text className="text-black text-xs">
+                  Profit
+                </Text>
+              </View>
+              <View className="basis-1/2 ">
+                {/* <Text className="font-bold text-xs text-right">{dataDetails.item.supplier}</Text> */}
+                <Text className="font-bold text-xs text-right">{dataDetails.item.modal_asing}</Text>
+                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.modal_rp)}</Text>
+                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.modal_overhead_rp)}</Text>
+                {/* <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.harga_jual)}</Text> */}
+                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.profit)}</Text>
+              </View>
+            </View>
+
+            <View className="basis-1/2 flex flex-row items-start h-auto mx-4 px-0">
+              <View className="basis-1/2">
+                <Text className="text-black text-xs">
+                  KURS
+                </Text>
+                <Text className="text-black text-xs">
+                  OVERHEAD
+                </Text>
+                <Text className="text-black text-xs">
+                  MARGIN
+                </Text>
+              </View>
+              <View className="basis-1/2 px-3">
+                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.kurs)}</Text>
+                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.overhead)}</Text>
+                <Text className="font-bold text-xs text-right">{dataDetails.item.margin}%</Text>
+              </View>
+            </View>
+          </View>
+
+          <View className="flex flex-row px-0 mr-4 mx-4 mt-2 h-[35px] justify-center">
+            <View className="basis-2/5 h-[40px] m-1 bg-black rounded-full shadow-sm ">
+              <Text className="font-bold text-xl text-white text-center mt-2">
+                Orders {" "}
+                {Numbering.format(
+                  dataDetails.item.total_stok === null
+                    ? 0
+                    : dataDetails.item.total_stok
+                )}
+              </Text>
+            </View>
+            <View className="basis-2/5 h-[40px] m-1 bg-red-600 rounded-full shadow-sm">
+              <Text className="font-bold text-xl text-white text-center mt-2">
+                Unfulfilled {" "}
+                {Numbering.format(
+                  dataDetails.item.total_stok === null
+                    ? 0
+                    : dataDetails.item.total_stok
+                )}
+              </Text>
+            </View>
+          </View>
         </View>
-
-        <View className="flex-row">
-          <View className="mx-4 items-start h-auto py-2">
-            <Text className="text-black text-xs">
-              Supplier :{" "}
-              <Text className="font-bold">{dataDetails.item.supplier}</Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              Modal Produk Asing :
-              <Text className="font-bold">
-                {Numbering.format(dataDetails.item.modal_asing)}
-              </Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              Modal Produk Rupiah :
-              <Text className="font-bold">
-                {Rupiah.format(dataDetails.item.modal_rp)}
-              </Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              Overhead :
-              <Text className="font-bold">
-                {Rupiah.format(dataDetails.item.modal_overhead_rp)}
-              </Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              Profit :
-              <Text className="font-bold">
-                {Rupiah.format(dataDetails.item.profit)}
-              </Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              Harga Jual :
-              <Text className="font-bold">
-                {Rupiah.format(dataDetails.item.harga_jual)}
-              </Text>
-            </Text>
-          </View>
-
-          <View className="mx-4 items-end h-auto py-2 ml-auto">
-            <Text className="text-black text-xs">
-              KURS :{" "}
-              <Text className="font-bold">
-                {Rupiah.format(dataDetails.item.kurs)}
-              </Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              OVERHEAD :
-              <Text className="font-bold">
-                {Rupiah.format(dataDetails.item.overhead)}
-              </Text>
-            </Text>
-
-            <Text className="text-black text-xs">
-              MARGIN :
-              <Text className="font-bold">{dataDetails.item.margin}%</Text>
-            </Text>
-          </View>
-        </View>
-
         <Modal
           className="bg-black"
           animationType="slide"
@@ -225,21 +239,21 @@ export default function AddPo({ route, navigation }) {
                 {data_variasi.length < 1 ? (
                   <View className="flex-1 items-center justify-center">
                     <Text className="basis-1/12 text-center">
-                      Variasi belum ada , Silahkan Tambahkan Variasi dan Stok
+                      There are no variations yet, please add variations and stock
                     </Text>
                   </View>
                 ) : (
                   <>
-                    <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2">
-                      <Text className="basis-1/12 text-center">No.</Text>
-                      <Text className="basis-2/12 text-center">WARNA</Text>
-                      <Text className="basis-2/12 text-center">UKURAN</Text>
-                      <Text className="basis-2/12 text-center">QTY READY</Text>
-                      <Text className="basis-2/12 text-center">
-                        QTY DIPESAN
+                    <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
+                      <Text className="basis-1/12 text-center text-xs">NO.</Text>
+                      <Text className="basis-2/12 text-center text-xs">COLOR</Text>
+                      <Text className="basis-2/12 text-center text-xs">SIZE</Text>
+                      <Text className="basis-2/12 text-center text-xs">AVAILABLE</Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        ORDER
                       </Text>
-                      <Text className="basis-2/12 text-center">SISA</Text>
-                      <Text className="basis-1/12 text-center">Act</Text>
+                      <Text className="basis-2/12 text-center text-xs">UNFILLED</Text>
+                      <Text className="basis-1/12 text-center text-xs">ACT</Text>
                     </View>
                     <View
                       style={{
@@ -268,19 +282,19 @@ export default function AddPo({ route, navigation }) {
                       item: null,
                     });
                   }}
-                  className="basis-2/3 bg-red-500 px-3 py-2 rounded-md"
+                  className="basis-2/3 bg-red-600 px-3 py-2 rounded-md"
                 >
                   <Text className="text-white font-bold text-center text-sm">
-                    Tambah Variasi dan Stok Baru
+                    Add Variations & New Stock
                   </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                   onPress={() => setModalVisible(!modalVisible)}
-                  className="grow bg-gray-500 px-3 py-2 rounded-md"
+                  className="grow bg-black px-3 py-2 rounded-md"
                 >
                   <Text className="text-white font-bold text-center text-sm">
-                    Kembali
+                    Back
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -296,10 +310,10 @@ export default function AddPo({ route, navigation }) {
 
         <TouchableOpacity
           onPress={() => getVariasi()}
-          className="mx-3 bg-red-500 px-4 py-3 rounded-lg mt-10"
+          className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-20 justify-items-end"
         >
           <Text className="text-white font-bold text-center text-base">
-            Lihat Detail Stok
+            View Stock Details
           </Text>
         </TouchableOpacity>
       </ScrollView>

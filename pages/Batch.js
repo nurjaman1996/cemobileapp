@@ -76,7 +76,7 @@ export default function BatchScreen({ navigation }) {
   function itemProduct(item) {
     return (
       <View key={item.id} className="mt-2 px-2" style={{ width: width }}>
-        <View className="px-2 bg-white h-auto p-5 rounded-md flex flex-row items-center">
+        <View className="px-2 bg-white h-auto p-5 rounded-md flex flex-row items-center rounded-2xl  shadow-md">
           <View className="grow space-y-1">
             <Text className="font-bold">{item.id_batch}</Text>
             <Text>Tanggal Keberangkatan : {item.tanggal_batch}</Text>
@@ -85,7 +85,7 @@ export default function BatchScreen({ navigation }) {
           </View>
 
           <TouchableOpacity
-            className="bg-red-400 py-2 px-2 rounded-md"
+            className="bg-red-600 py-2 px-2 rounded-xl"
             onPress={() => {
               Alert.alert(
                 `Delete Data`,
@@ -99,7 +99,7 @@ export default function BatchScreen({ navigation }) {
               );
             }}
           >
-            <Text style={{ color: "white" }}>Delete Batch</Text>
+            <Text className="font-bold" style={{ color: "white" }}>Delete Batch</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -108,15 +108,16 @@ export default function BatchScreen({ navigation }) {
 
   return (
     <SafeAreaView className="bg-white h-full">
-      <View className="mb-2 z-50 flex flex-row items-center p-4">
+      <View className="mb-0 z-50 flex flex-row items-center p-4">
         <View className="basis-5/6 bg-white">
           <TextInput
             value={SerachQuery}
-            placeholder="Cari Batch"
+            placeholder="Search Batch.."
             style={{
               borderWidth: 1,
-              padding: 15,
-              borderRadius: 5,
+              padding: 16,
+              borderRadius: 8,
+              borderColor: "#8EA4BB",
             }}
             onChangeText={(e) => {
               setSerachQuery(e);

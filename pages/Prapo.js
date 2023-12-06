@@ -140,7 +140,7 @@ export default function PrapoScreen({ navigation }) {
   function itemProduct(item) {
     return (
       <View key={item.id} className="mt-2 px-2" style={{ width: width }}>
-        <View className="px-2 bg-white h-auto p-5 rounded-md flex flex-row items-center">
+        <View className="px-2 bg-white border border-gray-100 h-auto p-5 rounded-2xl  shadow-md flex flex-row items-center">
           <View className="grow space-y-1">
             <Text className="font-bold">{item.id_po}</Text>
             <Text>KURS : {Rupiah.format(item.kurs)}</Text>
@@ -149,7 +149,7 @@ export default function PrapoScreen({ navigation }) {
           </View>
 
           <TouchableOpacity
-            className="bg-red-400 py-2 px-2 rounded-md"
+            className="bg-red-600  py-2 px-2 rounded-xl"
             onPress={() => {
               Alert.alert(
                 `Delete Data`,
@@ -166,7 +166,7 @@ export default function PrapoScreen({ navigation }) {
               );
             }}
           >
-            <Text style={{ color: "white" }}>Delete PO</Text>
+            <Text className="font-bold" style={{ color: "white" }}>Delete PO</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -175,7 +175,7 @@ export default function PrapoScreen({ navigation }) {
 
   return (
     <SafeAreaView className="bg-white h-full">
-      <View className="mb-2 z-50 flex flex-row items-center p-4">
+      <View className="mb-0 z-50 flex flex-row items-center p-4">
         <View className="basis-5/6 bg-white">
           <DropDownPicker
             style={{

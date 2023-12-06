@@ -125,7 +125,7 @@ export default function IventoryScreen({ navigation }) {
             item,
           })
         }
-        className="my-2 px-2"
+        className="my-1 px-2"
       >
         <View className="border bg-white border-gray-200 rounded-md">
           <View className="w-full aspect-square border-gray-200 border-b">
@@ -143,82 +143,109 @@ export default function IventoryScreen({ navigation }) {
             />
           </View>
 
-          <View className="px-2 mb-2">
-            <View className="h-10 mt-1.5 justify-start">
+          <View className="px-2 bg-gray-50 shadow-md">
+            <View className="h-4 mt-1.5 justify-start">
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"
-                className={`${
-                  item.produk == "null" ? "text-red-500" : "text-[#2e2e2e]"
-                } font-bold text-sm`}
+                className={`${item.produk == "null" ? "text-red-500" : "text-[#2e2e2e]"
+                  } font-bold text-left text-md`}
               >
                 {item.produk == "null" ? "Belum ada nama" : item.produk}
               </Text>
             </View>
-            <Text className="text-gray-400 text-xs">{item.id_produk}</Text>
+            {/* <Text className="text-gray-400 text-xs">{item.id_produk}</Text> */}
 
-            <Text className="text-black text-xs">
-              Supplier : <Text className="font-bold">{item.supplier}</Text>
-            </Text>
+            <View className="mb-1">
+              <Text className="text-black text-md text-left">
+                <Text className="font-medium">{item.supplier}</Text>
+              </Text>
+            </View>
 
-            <Text className="text-black text-xs">
+            {/* <Text className="text-black text-xs">
               Modal Produk :
               <Text className="font-bold">{Rupiah.format(item.modal_rp)}</Text>
-            </Text>
+            </Text> */}
 
-            <Text className="text-black text-xs">
+            {/* <Text className="text-black text-xs">
               Overhead :
               <Text className="font-bold">
                 {Rupiah.format(item.modal_overhead_rp)}
               </Text>
-            </Text>
+            </Text> */}
 
-            <Text className="text-black text-xs">
+            {/* <Text className="text-black text-xs">
               Profit :
               <Text className="font-bold">{Rupiah.format(item.profit)}</Text>
-            </Text>
+            </Text> */}
 
-            <Text className="text-black text-xs">
+            {/* <Text className="text-black text-xs">
               Harga Jual :
               <Text className="font-bold">
                 {Rupiah.format(item.harga_jual)}
               </Text>
-            </Text>
+            </Text> */}
 
-            <View className="text-xs flex flex-row gap-2 mt-1">
-              <Text className="text-black text-xs">
-                Ready :{" "}
-                <Text className="font-bold">
-                  {/* {item.total_stok - item.total_reserved < 0
-                    ? 0
-                    : item.total_stok - item.total_reserved} */}
+            <View className="text-xs flex flex-row gap-2">
 
-                  {Numbering.format(
-                    item.total_stok === null ? 0 : item.total_stok
-                  )}
+              <View className="text-black flex flex-row text-xs ml-auto">
+                <Text className="basis-1/2 font-medium text-xs">
+                  Order
                 </Text>
-              </Text>
+              </View>
 
-              <Text className="text-black text-xs ml-auto">
-                Pesanan :{" "}
-                <Text className="font-bold">
+              <View className="text-black flex flex-row text-xs ml-auto">
+                <Text className="font-bold basis-1/2 text-right">
+                  :{" "}
                   {Numbering.format(
                     item.total_reserved === null ? 0 : item.total_reserved
                   )}
                 </Text>
-              </Text>
+              </View>
+
             </View>
-            <Text className="text-black text-xs mb-2">
-              Belum Terpenuhi :{" "}
-              <Text className="font-bold">
-                {Numbering.format(
-                  item.total_permintaan < 0 ? item.total_permintaan : 0
-                )}
-              </Text>
-            </Text>
+
+            <View className="text-xs flex flex-row gap-2">
+
+              <View className="text-black flex flex-row text-xs ml-auto">
+                <Text className="basis-1/2 font-medium text-xs  text-green-500">
+                  Available
+                </Text>
+              </View>
+
+              <View className="text-black flex flex-row text-xs ml-auto">
+                <Text className="font-bold basis-1/2 text-right text-green-500">
+                  :{" "}
+                  {Numbering.format(
+                    item.total_stok === null ? 0 : item.total_stok
+                  )}
+                </Text>
+              </View>
+
+            </View>
+
+            <View className="text-xs flex flex-row gap-2">
+
+              <View className="text-black flex flex-row text-xs ml-auto">
+                <Text className="basis-1/2 font-medium text-xs  text-red-600">
+                  Unfulfilled
+                </Text>
+              </View>
+
+              <View className="text-black flex mb-2 flex-row text-xs ml-auto">
+                <Text className="font-bold basis-1/2 text-right text-red-600">
+                  :{" "}
+                  {Numbering.format(
+                    item.total_permintaan < 0 ? item.total_permintaan : 0
+                  )}
+                </Text>
+              </View>
+
+            </View>
+
           </View>
-        </View>
-      </Pressable>
+        </View >
+      </Pressable >
     );
   }
 
@@ -275,7 +302,7 @@ export default function IventoryScreen({ navigation }) {
       <View className="bg-white px-4 pb-3">
         <TextInput
           value={SerachQuery}
-          placeholder="Cari Produk"
+          placeholder="Search Product.."
           style={{
             borderWidth: 1,
             padding: 15,

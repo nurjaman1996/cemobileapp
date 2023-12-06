@@ -95,7 +95,7 @@ export default function AddPo({ route, navigation }) {
           className="flex-col h-full space-y-5 px-2 pt-5"
         >
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">BATCH</Text>
+            <Text className="text-xs mb-1 font-bold">BATCH</Text>
             <TextInput
               value={id_batch}
               editable={false}
@@ -104,7 +104,7 @@ export default function AddPo({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">TANGGAL MULAI PO</Text>
+            <Text className="text-xs mb-1 font-bold">START DATE PO</Text>
             <TouchableOpacity
               className="w-full"
               onPress={() => setShowStart(!showStart)}
@@ -127,7 +127,7 @@ export default function AddPo({ route, navigation }) {
           )}
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">TANGGAL SELESAI PO</Text>
+            <Text className="text-xs mb-1 font-bold">END DATE PO</Text>
             <TouchableOpacity
               className="w-full"
               onPress={() => setShowEnd(!showEnd)}
@@ -150,7 +150,7 @@ export default function AddPo({ route, navigation }) {
           )}
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">KURS</Text>
+            <Text className="text-xs mb-1 font-bold">KURS</Text>
             <TextInput
               style={styles.input2}
               value={v_kurs}
@@ -162,7 +162,7 @@ export default function AddPo({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">OVERHEAD</Text>
+            <Text className="text-xs mb-1 font-bold">OVERHEAD</Text>
             <TextInput
               style={styles.input2}
               value={v_overhead}
@@ -174,7 +174,7 @@ export default function AddPo({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2 mb-4">
-            <Text className="text-xs mb-1">MARGIN</Text>
+            <Text className="text-xs mb-1 font-bold">MARGIN</Text>
             <TextInput
               style={styles.input2}
               value={v_margin}
@@ -207,10 +207,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 15,
     elevation: 3,
     width: "100%",
-    backgroundColor: "black",
+    backgroundColor: "#D13D3D",
   },
   text: {
     fontSize: 16,

@@ -81,7 +81,7 @@ export default function AddBatch({ route, navigation }) {
           className="flex-col h-full space-y-5 px-2 pt-5"
         >
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">Tanggal Keberangkatan</Text>
+            <Text className="text-xs mb-1 font-bold">DATE OF DEPARTURE</Text>
             <TouchableOpacity
               className="w-full"
               onPress={() => setShowStart(!showStart)}
@@ -104,7 +104,7 @@ export default function AddBatch({ route, navigation }) {
           )}
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">Negara</Text>
+            <Text className="text-xs mb-1 font-bold">COUNTRY</Text>
             <TextInput
               style={styles.input2}
               value={country}
@@ -116,7 +116,7 @@ export default function AddBatch({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2 mb-4">
-            <Text className="text-xs mb-1">Kota</Text>
+            <Text className="text-xs mb-1 font-bold">CITY</Text>
             <TextInput
               style={styles.input2}
               value={city}
@@ -149,10 +149,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 15,
     elevation: 3,
     width: "100%",
-    backgroundColor: "black",
+    backgroundColor: "#D13D3D",
   },
   text: {
     fontSize: 16,

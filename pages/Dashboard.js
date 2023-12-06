@@ -15,6 +15,7 @@ import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DropDownPicker from "react-native-dropdown-picker";
 import { BASE_URL } from "@env";
+import { BarChart } from "react-native-gifted-charts";
 
 let Rupiah = new Intl.NumberFormat("id-ID", {
   style: "currency",
@@ -90,6 +91,7 @@ export default function DashboardScreen({ navigation }) {
   const [permintaan, setpermintaan] = React.useState("");
   const [count, setcount] = React.useState("");
 
+
   async function getDataDashboard(idBatchs) {
     try {
       const res = await axios({
@@ -146,10 +148,27 @@ export default function DashboardScreen({ navigation }) {
     getDataDashboard(value);
   }
 
+  const barData = [
+    { value: 230, label: 'Mon', frontColor: '#D13D3D' },
+    { value: 180, label: 'Tue', frontColor: '#D13D3D' },
+    { value: 195, label: 'Wed', frontColor: '#D13D3D' },
+    { value: 250, label: 'Thur', frontColor: '#D13D3D' },
+    { value: 320, label: 'Fri', frontColor: '#D13D3D' },
+    { value: 320, label: 'Sat', frontColor: '#D13D3D' },
+    { value: 320, label: 'Sun', frontColor: '#D13D3D' },
+  ];
+
   return (
     <SafeAreaView className="bg-white h-full">
-      <View className="flex flex-row items-center py-2 mb-2 px-5">
-        <Text className="grow text-xl font-bold ">CE APPS</Text>
+      <View className="flex flex-row items-center justify-center py-2 mb-2 px-5">
+        <Text className="grow  text-[#D13D3D]">
+          <Text className="text-2xl font-bold">
+            CE APPS
+          </Text>{"\n"}
+          <Text className="truncate text-black font-medium ">
+            Hello, User
+          </Text>
+        </Text>
 
         <View className="justify-end flex flex-row">
           <Image
@@ -170,7 +189,7 @@ export default function DashboardScreen({ navigation }) {
           paddingHorizontal: 15,
         }}
         containerStyle={{
-          marginBottom: 15,
+          marginBottom: 10,
           marginHorizontal: 15,
           width: "auto",
         }}
@@ -209,113 +228,199 @@ export default function DashboardScreen({ navigation }) {
           }
         >
           {/* Card1 */}
-          <View className="bg-gray-100 h-32 rounded-lg flex flex-row p-4 mx-4 mb-2">
+          <View className="bg-[#D13D3D] h-32 rounded-lg flex flex-row p-4 mx-4 mb-2 ">
             <View className="grow text-center items-start justify-center flex flex-col">
-              <View>
-                <Text className="font-bold text-lg">Ringkasan Penjualan</Text>
-              </View>
-
-              <View className="grow flex flex-row space-x-3 items-center">
-                <View className="text-center items-center justify-center">
-                  <Image
-                    source={require("../public/money.png")}
-                    style={{
-                      width: 30,
-                      height: 30,
-                      resizeMode: "contain",
-                    }}
+              <View className="grow flex flex-row items-center">
+                <View className="basis-1/2 text-center items-start">
+                  <Text className="font-bold text-xl text-white">Sales Summary</Text>
+                  <Text className="font-bold text-4xl text-white mt-5">
+                    {Rupiah.format(penjualan)}
+                  </Text>
+                </View>
+                <View className="basis-1/2 items-end">
+                  <Ionicons
+                    name="logo-usd"
+                    size={80}
+                    color="white"
                   />
                 </View>
-                <Text className="font-bold text-2xl">
-                  {Rupiah.format(penjualan)}
-                </Text>
-              </View>
-
-              <View>
-                <Text className="font-medium text-sm">
-                  Total {Numbering.format(count)} Pesanan
-                </Text>
               </View>
             </View>
           </View>
+
+          <View className="flex flex-row mb-2 space-x-2 items-center justify-center px-4">
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-full px-4 shadow">
+              <View className="justify-center">
+                <Text className="font-bold text-left text-white">Total Order</Text>
+                <Text className="font-bold text-left text-white">{Numbering.format(count)}</Text>
+              </View>
+              <View className="grow text-center items-end justify-center">
+                <Ionicons
+                  name="cart-sharp"
+                  size={40}
+                  color="white"
+                />
+              </View>
+            </View>
+          </View>
+
+          {/* <View className="mt-2 ml-4 mr-4">
+            <BarChart
+              showFractionalValue
+              showYAxisIndices
+              noOfSections={5}
+              maxValue={1000}
+              data={barData}
+              isAnimated
+            />
+          </View> */}
+
+
           {/* Card1 */}
           {/* Card2 */}
           <View className="flex flex-row mb-2 space-x-2 items-center justify-center px-5">
-            <View className="bg-gray-100 h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
-              <View className="text-center items-center justify-center">
-                <Image
-                  source={require("../public/product.png")}
-                  style={{
-                    width: 35,
-                    height: 35,
-                    resizeMode: "contain",
-                  }}
-                />
+
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+              <View className="justify-center">
+                <Text className="font-bold text-left text-white">Total Product</Text>
+                <Text className="font-bold text-left text-white">{total_produk}</Text>
               </View>
-              <View className="grow text-center items-start justify-center flex flex-col">
-                <Text className="font-bold">Total Produk</Text>
-                <Text>{total_produk}</Text>
+              <View className="grow text-center items-end justify-center">
+                <Ionicons
+                  name="cube-sharp"
+                  size={40}
+                  color="white"
+                />
               </View>
             </View>
 
-            <View className="bg-gray-100 h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
-              <View className="text-center items-center justify-center">
-                <Image
-                  source={require("../public/requested.png")}
-                  style={{
-                    width: 35,
-                    height: 35,
-                    resizeMode: "contain",
-                  }}
+
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+              <View className="justify-center">
+                <Text className="font-bold text-left text-white">Stock Available</Text>
+                <Text className="font-bold text-left text-white">{Numbering.format(stok_ready)}</Text>
+              </View>
+              <View className="grow text-center items-end justify-center">
+                <Ionicons
+                  name="checkmark-circle-sharp"
+                  size={40}
+                  color="white"
                 />
               </View>
-              <View className="grow text-center items-start justify-center flex flex-col">
-                <Text className="font-bold">Permintaan Stok</Text>
-                <Text>{Numbering.format(permintaan)} Qty</Text>
-              </View>
             </View>
+
           </View>
           {/* Card2 */}
           {/* Card3 */}
           <View className="flex flex-row mb-2 space-x-2 items-center justify-center px-5">
-            <View className="bg-gray-100 h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
-              <View className="text-center items-center justify-center">
-                <Image
-                  source={require("../public/instock.png")}
-                  style={{
-                    width: 35,
-                    height: 35,
-                    resizeMode: "contain",
-                  }}
-                />
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+              <View className="justify-center">
+                <Text className="font-bold text-left text-white">Stock Requested</Text>
+                <Text className="font-bold text-left text-white">{Numbering.format(permintaan)}</Text>
               </View>
-              <View className="grow text-center items-start justify-center flex flex-col">
-                <Text className="font-bold">Stok Tersedia</Text>
-                <Text>{Numbering.format(stok_ready)} Qty</Text>
+              <View className="grow text-center items-end justify-center">
+                <Ionicons
+                  name="bar-chart-sharp"
+                  size={40}
+                  color="white"
+                />
               </View>
             </View>
 
-            <View className="bg-gray-100 h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
-              <View className="text-center items-center justify-center">
-                <Image
-                  source={require("../public/reserved.png")}
-                  style={{
-                    width: 35,
-                    height: 35,
-                    resizeMode: "contain",
-                  }}
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+              <View className="justify-center">
+                <Text className="font-bold text-left text-white">Stock Unfulfilled</Text>
+                <Text className="font-bold text-left text-white">{Numbering.format(stok_ready - permintaan)}</Text>
+              </View>
+              <View className="grow text-center items-end justify-center">
+                <Ionicons
+                  name="contrast-sharp"
+                  size={40}
+                  color="white"
                 />
               </View>
-              <View className="grow text-center items-start justify-center flex flex-col">
-                <Text className="font-bold">Belum terpenuhi</Text>
-                <Text>{Numbering.format(stok_ready - permintaan)} Qty</Text>
+            </View>
+
+          </View>
+
+          <View className="flex flex-row space-x-2 items-center justify-center px-4">
+            <View className=" h-[50px] rounded-t-lg flex flex-row space-x-3 basis-full px-4 shadow border border-gray-200">
+              <View className="justify-center ">
+                <Text className="font-medium text-xl text-left text-black ">Transaction History</Text>
+              </View>
+              <View className="grow text-center items-end justify-center">
+                <Ionicons
+                  name="chevron-forward-sharp"
+                  size={30}
+                  color="black"
+                />
               </View>
             </View>
           </View>
+
+          <View className="flex flex-row items-start justify-center rounded-b-lg border border-gray-200 h-[78px] mx-4">
+            <View className="basis-1/6 mt-3 mr-1 items-center">
+              <Ionicons
+                name="timer-sharp"
+                size={50}
+                color="#D13D3D"
+              />
+            </View>
+            <View className="basis-2/4 mt-1 items-start">
+              <Text className="text-lg">Celana Jogger</Text>
+              <Text className="text-xs">OHAYO</Text>
+              <Text className="text-xs">10 Pcs</Text>
+              <Text className="text-xs">06 Dec 2023, 02:04</Text>
+            </View>
+            <View className="basis-1/4 mt-8 items-center">
+              <Text className="text-xs font-bold text-red-700">Rp55.120.500</Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row items-start justify-center rounded-b-lg border border-gray-200 h-[78px] mx-4">
+            <View className="basis-1/6 mt-3 mr-1 items-center">
+              <Ionicons
+                name="timer-sharp"
+                size={50}
+                color="#D13D3D"
+              />
+            </View>
+            <View className="basis-2/4 mt-1 items-start">
+              <Text className="text-lg">Jacket Winter</Text>
+              <Text className="text-xs">OHAYO</Text>
+              <Text className="text-xs">21 Pcs</Text>
+              <Text className="text-xs">06 Dec 2023, 02:04</Text>
+            </View>
+            <View className="basis-1/4 mt-8 items-center">
+              <Text className="text-xs font-bold text-red-700">Rp55.120.500</Text>
+            </View>
+          </View>
+          <View className="flex flex-row items-start justify-center rounded-b-lg border border-gray-200 h-[78px] mx-4">
+            <View className="basis-1/6 mt-3 mr-1 items-center">
+              <Ionicons
+                name="timer-sharp"
+                size={50}
+                color="#D13D3D"
+              />
+            </View>
+            <View className="basis-2/4 mt-1 items-start">
+              <Text className="text-lg">Celana Jogger</Text>
+              <Text className="text-xs">OHAYO</Text>
+              <Text className="text-xs">10 Pcs</Text>
+              <Text className="text-xs">06 Dec 2023, 02:04</Text>
+            </View>
+            <View className="basis-1/4 mt-8 items-center">
+              <Text className="text-xs font-bold text-red-700">Rp55.120.500</Text>
+            </View>
+          </View>
+
+
+
           {/* Card3 */}
           {/* <Text>{JSON.stringify(data)}</Text> */}
         </ScrollView>
-      )}
-    </SafeAreaView>
+      )
+      }
+    </SafeAreaView >
   );
 }

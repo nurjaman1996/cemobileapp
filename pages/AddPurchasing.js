@@ -86,7 +86,7 @@ export default function AddPurchasing({ route, navigation }) {
           className="flex-col h-full space-y-5 px-2 pt-5"
         >
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">BATCH</Text>
+            <Text className="text-xs mb-1 font-bold">BATCH</Text>
             <TextInput
               value={dataDetails.id_batch}
               editable={false}
@@ -95,7 +95,7 @@ export default function AddPurchasing({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">ID PO</Text>
+            <Text className="text-xs mb-1 font-bold">ID PO</Text>
             <TextInput
               value={dataDetails.id_po}
               editable={false}
@@ -104,7 +104,7 @@ export default function AddPurchasing({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">ID Produk</Text>
+            <Text className="text-xs mb-1 font-bold">ID PRODUCT</Text>
             <TextInput
               value={dataDetails.id_produk}
               editable={false}
@@ -113,7 +113,7 @@ export default function AddPurchasing({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">Supplier</Text>
+            <Text className="text-xs mb-1 font-bold">SUPPLIER</Text>
             <TextInput
               value={dataDetails.supplier}
               editable={false}
@@ -122,7 +122,7 @@ export default function AddPurchasing({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">Warna</Text>
+            <Text className="text-xs mb-1 font-bold">COLOR</Text>
             {item === null ? (
               <TextInput
                 editable={true}
@@ -142,7 +142,7 @@ export default function AddPurchasing({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2">
-            <Text className="text-xs mb-1">Ukuran</Text>
+            <Text className="text-xs mb-1 font-bold">SIZE</Text>
             {item === null ? (
               <TextInput
                 editable={true}
@@ -162,7 +162,7 @@ export default function AddPurchasing({ route, navigation }) {
           </View>
 
           <View className="grow justify-start items-start px-2 mb-2">
-            <Text className="text-xs mb-1">Qty</Text>
+            <Text className="text-xs mb-1 font-bold">Qty</Text>
             <TextInput
               editable={true}
               style={styles.input2}
@@ -196,10 +196,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 4,
+    borderRadius: 15,
     elevation: 3,
     width: "100%",
-    backgroundColor: "black",
+    backgroundColor: "#D13D3D",
   },
   text: {
     fontSize: 16,

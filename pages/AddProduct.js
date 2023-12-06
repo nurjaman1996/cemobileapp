@@ -257,7 +257,7 @@ export default function DetailPage({ route, navigation }) {
                       borderColor: "#8EA4BB",
                       backgroundColor: "white",
                     }}
-                    placeholder="Pilih PO"
+                    placeholder="Select PO"
                     open={openPo}
                     value={v_idpo}
                     items={ListPo}
@@ -301,7 +301,7 @@ export default function DetailPage({ route, navigation }) {
                       borderColor: "#8EA4BB",
                       backgroundColor: "white",
                     }}
-                    placeholder="Pilih Sup"
+                    placeholder="Select Sup"
                     open={openSup}
                     value={v_sup}
                     items={ListSup}
@@ -357,9 +357,9 @@ export default function DetailPage({ route, navigation }) {
         </View>
 
         <View className="px-3 mt-5  -z-10">
-          <Text className="text-xs mb-1">Nama Produk (OPTIONAL)</Text>
+          <Text className="text-xs mb-1">Name Product (OPTIONAL)</Text>
           <TextInput
-            placeholder="Nama Produk"
+            placeholder="Insert Name Product.."
             editable={!disabledForm}
             style={styles.input2}
             value={v_produk}
@@ -371,9 +371,9 @@ export default function DetailPage({ route, navigation }) {
         </View>
 
         <View className="px-3 mt-5  -z-10">
-          <Text className="text-xs mb-1">Modal (KURS ASING)</Text>
+          <Text className="text-xs mb-1">Costs (KURS FOREIGN)</Text>
           <TextInput
-            placeholder="Masukan Modal"
+            placeholder="Insert Cost.."
             editable={!disabledForm}
             style={styles.input2}
             value={v_modalasing}
@@ -385,9 +385,9 @@ export default function DetailPage({ route, navigation }) {
         </View>
 
         <View className="px-3 mt-4 mb-4  -z-10">
-          <Text className="text-xs mb-1">Berat Produk</Text>
+          <Text className="text-xs mb-1">Weight Product</Text>
           <TextInput
-            placeholder="Masukan Berat Produk"
+            placeholder="Insert Product Weight"
             editable={!disabledForm}
             style={styles.input2}
             value={v_beratproduk}
@@ -398,7 +398,7 @@ export default function DetailPage({ route, navigation }) {
           />
         </View>
 
-        <View className="mt-5 mb-8 justify-start items-start px-2 w-full">
+        <View className="mt-5 mb-8 justify-start items-start px-2 w-full shadow-sm">
           <TouchableOpacity
             disabled={disabledForm}
             style={disabledForm ? styles.buttonDisabled : styles.button}
@@ -430,7 +430,7 @@ export default function DetailPage({ route, navigation }) {
           </View>
 
           <View className="basis-1/3 justify-center items-center px-2">
-            <Text className="text-xs mb-1 font-bold">HARGA JUAL</Text>
+            <Text className="text-xs mb-1 font-bold ">SELLING PRICE</Text>
             <TextInput
               value={Rupiah.format(r_price)}
               editable={false}
@@ -449,10 +449,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
-    borderRadius: 10,
+    borderRadius: 15,
     elevation: 3,
     width: "100%",
-    backgroundColor: "black",
+    backgroundColor: "#D13D3D",
   },
 
   buttonDisabled: {
