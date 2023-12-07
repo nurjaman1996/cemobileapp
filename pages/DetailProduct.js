@@ -99,7 +99,7 @@ export default function AddPo({ route, navigation }) {
         automaticallyAdjustKeyboardInsets={true}
         className="h-full"
       >
-        <View className="aspect-square rounded-b-md ">
+        <View className="aspect-square rounded-b-md -mb-5 -ml-8">
           <Image
             source={{
               uri: `http://139.180.130.182:4000/assets/img/${dataDetails.item.images}`,
@@ -112,7 +112,7 @@ export default function AddPo({ route, navigation }) {
           />
         </View>
 
-        <View className="-mt-5 bg-green-600 w-[50%] mx-auto rounded-3xl p-2 flex items-center">
+        <View className="-mt-5 bg-black w-[50%] mx-auto rounded-3xl p-2 flex items-center -mb-5 z-10 shadow-sm">
           <Text className="font-bold text-xl text-white">
             Available Stock {" "}
             {Numbering.format(
@@ -123,8 +123,8 @@ export default function AddPo({ route, navigation }) {
           </Text>
         </View>
 
-        <View className="border border-gray-300 border-b-0 rounded-t-3xl">
-          <View className="mx-4 flex-row items-center h-auto border-b border-gray-300 py-2  ">
+        <View className="border border-gray-300 border-b-0 rounded-t-3xl bg-white">
+          <View className="mx-4 flex-row items-center h-auto border-b border-gray-300 py-2">
             <View className="basis-3/4">
               <Text
                 numberOfLines={2}
@@ -132,7 +132,7 @@ export default function AddPo({ route, navigation }) {
                 className={`${dataDetails.item.produk == "null"
                   ? "text-red-500"
                   : "text-[#2e2e2e]"
-                  } font-bold text-xl `}
+                  } font-bold text-xl mt-4`}
               >
                 {dataDetails.item.produk == "null"
                   ? "Belum ada nama"
@@ -187,16 +187,16 @@ export default function AddPo({ route, navigation }) {
             <View className="basis-1/2 flex flex-row items-start h-auto mx-4 px-0">
               <View className="basis-1/2">
                 <Text className="text-black text-xs">
-                  KURS
+                  Kurs
                 </Text>
                 <Text className="text-black text-xs">
-                  OVERHEAD
+                  Overhead
                 </Text>
                 <Text className="text-black text-xs">
-                  MARGIN
+                  Margin
                 </Text>
               </View>
-              <View className="basis-1/2 px-3">
+              <View className="basis-1/2 px-4">
                 <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.kurs)}</Text>
                 <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.overhead)}</Text>
                 <Text className="font-bold text-xs text-right">{dataDetails.item.margin}%</Text>
@@ -204,9 +204,9 @@ export default function AddPo({ route, navigation }) {
             </View>
           </View>
 
-          <View className="flex flex-row px-0 mr-4 mx-4 mt-2 h-[35px] justify-center">
-            <View className="basis-2/5 h-[40px] m-1 bg-black rounded-full shadow-sm ">
-              <Text className="font-bold text-xl text-white text-center mt-2">
+          <View className="flex flex-row px-0 mr-4 mx-4 h-[35px] justify-center border-b border-gray-300">
+            <View className="basis-2/5 h-[40px] m-1 rounded-full shadow-sm">
+              <Text className="font-bold text-lg text-black text-center mt-0 shadow-md">
                 Orders {" "}
                 {Numbering.format(
                   dataDetails.item.total_stok === null
@@ -215,15 +215,25 @@ export default function AddPo({ route, navigation }) {
                 )}
               </Text>
             </View>
-            <View className="basis-2/5 h-[40px] m-1 bg-red-600 rounded-full shadow-sm">
-              <Text className="font-bold text-xl text-white text-center mt-2">
-                Unfulfilled {" "}
+            <View className="basis-2/5 h-[40px] m-1 rounded-full shadow-sm">
+              <Text className="font-bold text-lg text-red-600 text-center mt-0  shadow-md">
+                Unfilled {" "}
                 {Numbering.format(
                   dataDetails.item.total_stok === null
                     ? 0
                     : dataDetails.item.total_stok
                 )}
               </Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row px-0 mr-4 mx-4 h-[35px]">
+            <View className="basis-full h-[40px] m-1 rounded-full shadow-sm items-center">
+              <Ionicons
+                name="create-outline"
+                size={40}
+                color="black"
+              />
             </View>
           </View>
         </View>
@@ -234,8 +244,9 @@ export default function AddPo({ route, navigation }) {
           visible={modalVisible}
         >
           <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+            <View style={styles.modalView} className=" bg-cyan-300 rounded-3xl border-t border-gray-200 shadow-md">
               <View className="w-full h-[70%] p-4">
+                <Text className="text-center text-xl -mt-2 font-bold mb-2">VARIATIONS</Text>
                 {data_variasi.length < 1 ? (
                   <View className="flex-1 items-center justify-center">
                     <Text className="basis-1/12 text-center">
@@ -310,7 +321,7 @@ export default function AddPo({ route, navigation }) {
 
         <TouchableOpacity
           onPress={() => getVariasi()}
-          className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-20 justify-items-end"
+          className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-10 justify-items-end"
         >
           <Text className="text-white font-bold text-center text-base">
             View Stock Details

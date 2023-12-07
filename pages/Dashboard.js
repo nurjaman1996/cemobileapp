@@ -231,13 +231,13 @@ export default function DashboardScreen({ navigation }) {
           <View className="bg-[#D13D3D] h-32 rounded-lg flex flex-row p-4 mx-4 mb-2 ">
             <View className="grow text-center items-start justify-center flex flex-col">
               <View className="grow flex flex-row items-center">
-                <View className="basis-1/2 text-center items-start">
+                <View className="basis-3/4 text-center items-start">
                   <Text className="font-bold text-xl text-white">Sales Summary</Text>
-                  <Text className="font-bold text-4xl text-white mt-5">
+                  <Text className="font-bold text-3xl text-white mt-5">
                     {Rupiah.format(penjualan)}
                   </Text>
                 </View>
-                <View className="basis-1/2 items-end">
+                <View className="basis-1/4 items-end">
                   <Ionicons
                     name="logo-usd"
                     size={80}
