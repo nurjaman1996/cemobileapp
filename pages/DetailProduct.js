@@ -99,22 +99,24 @@ export default function AddPo({ route, navigation }) {
         automaticallyAdjustKeyboardInsets={true}
         className="h-full"
       >
-        <View className="aspect-square rounded-b-md ">
-          <Image
-            source={{
-              uri: `http://139.180.130.182:4000/assets/img/${dataDetails.item.images}`,
-            }}
-            style={{
-              width: "100%",
-              height: "100%",
-              resizeMode: "contain",
-            }}
-          />
+        <View className="-mb-5">
+          <View className="aspect-square">
+            <Image
+              source={{
+                uri: `http://139.180.130.182:4000/assets/img/${dataDetails.item.images}`,
+              }}
+              style={{
+                width: "100%",
+                height: "100%",
+                resizeMode: "contain",
+              }}
+            />
+          </View>
         </View>
 
-        <View className="-mt-5 bg-green-600 w-[50%] mx-auto rounded-3xl p-2 flex items-center">
+        <View className="-mt-5 -mb-5 z-50 bg-green-600 w-[50%] mx-auto rounded-3xl p-2 flex items-center">
           <Text className="font-bold text-xl text-white">
-            Available Stock {" "}
+            Available Stock{" : "}
             {Numbering.format(
               dataDetails.item.total_stok === null
                 ? 0
@@ -123,16 +125,17 @@ export default function AddPo({ route, navigation }) {
           </Text>
         </View>
 
-        <View className="border border-gray-300 border-b-0 rounded-t-3xl">
+        <View className="border border-gray-300 border-b-0 pt-3 rounded-t-3xl bg-white">
           <View className="mx-4 flex-row items-center h-auto border-b border-gray-300 py-2  ">
             <View className="basis-3/4">
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"
-                className={`${dataDetails.item.produk == "null"
-                  ? "text-red-500"
-                  : "text-[#2e2e2e]"
-                  } font-bold text-xl `}
+                className={`${
+                  dataDetails.item.produk == "null"
+                    ? "text-red-500"
+                    : "text-[#2e2e2e]"
+                } font-bold text-xl `}
               >
                 {dataDetails.item.produk == "null"
                   ? "Belum ada nama"
@@ -148,7 +151,9 @@ export default function AddPo({ route, navigation }) {
 
             <Text className="basis-1/4 pt-1 font-bold text-md text-right">
               {Rupiah.format(dataDetails.item.harga_jual)}{" "}
-              <Text className="text-xs  text-red-500">400Gr</Text>
+              <Text className="text-xs  text-red-500">
+                {dataDetails.item.berat_produk}Gr
+              </Text>
             </Text>
           </View>
 
@@ -158,48 +163,48 @@ export default function AddPo({ route, navigation }) {
                 {/* <Text className="text-black text-xs">
                 Supplier
               </Text> */}
-                <Text className="text-black text-xs">
-                  Cost Kurs
-                </Text>
-                <Text className="text-black text-xs">
-                  Cost
-                </Text>
-                <Text className="text-black text-xs">
-                  Overhead
-                </Text>
+                <Text className="text-black text-xs">Cost Kurs</Text>
+                <Text className="text-black text-xs">Cost</Text>
+                <Text className="text-black text-xs">Overhead</Text>
                 {/* <Text className="text-black text-xs">
                 Selling Price
               </Text> */}
-                <Text className="text-black text-xs">
-                  Profit
-                </Text>
+                <Text className="text-black text-xs">Profit</Text>
               </View>
               <View className="basis-1/2 ">
                 {/* <Text className="font-bold text-xs text-right">{dataDetails.item.supplier}</Text> */}
-                <Text className="font-bold text-xs text-right">{dataDetails.item.modal_asing}</Text>
-                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.modal_rp)}</Text>
-                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.modal_overhead_rp)}</Text>
+                <Text className="font-bold text-xs text-right">
+                  {dataDetails.item.modal_asing}
+                </Text>
+                <Text className="font-bold text-xs text-right">
+                  {Rupiah.format(dataDetails.item.modal_rp)}
+                </Text>
+                <Text className="font-bold text-xs text-right">
+                  {Rupiah.format(dataDetails.item.modal_overhead_rp)}
+                </Text>
                 {/* <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.harga_jual)}</Text> */}
-                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.profit)}</Text>
+                <Text className="font-bold text-xs text-right">
+                  {Rupiah.format(dataDetails.item.profit)}
+                </Text>
               </View>
             </View>
 
             <View className="basis-1/2 flex flex-row items-start h-auto mx-4 px-0">
               <View className="basis-1/2">
-                <Text className="text-black text-xs">
-                  KURS
-                </Text>
-                <Text className="text-black text-xs">
-                  OVERHEAD
-                </Text>
-                <Text className="text-black text-xs">
-                  MARGIN
-                </Text>
+                <Text className="text-black text-xs">KURS</Text>
+                <Text className="text-black text-xs">OVERHEAD</Text>
+                <Text className="text-black text-xs">MARGIN</Text>
               </View>
               <View className="basis-1/2 px-3">
-                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.kurs)}</Text>
-                <Text className="font-bold text-xs text-right">{Rupiah.format(dataDetails.item.overhead)}</Text>
-                <Text className="font-bold text-xs text-right">{dataDetails.item.margin}%</Text>
+                <Text className="font-bold text-xs text-right">
+                  {Rupiah.format(dataDetails.item.kurs)}
+                </Text>
+                <Text className="font-bold text-xs text-right">
+                  {Rupiah.format(dataDetails.item.overhead)}
+                </Text>
+                <Text className="font-bold text-xs text-right">
+                  {dataDetails.item.margin}%
+                </Text>
               </View>
             </View>
           </View>
@@ -207,21 +212,21 @@ export default function AddPo({ route, navigation }) {
           <View className="flex flex-row px-0 mr-4 mx-4 mt-2 h-[35px] justify-center">
             <View className="basis-2/5 h-[40px] m-1 bg-black rounded-full shadow-sm ">
               <Text className="font-bold text-xl text-white text-center mt-2">
-                Orders {" "}
+                Orders{" : "}
                 {Numbering.format(
-                  dataDetails.item.total_stok === null
+                  dataDetails.item.total_reserved === null
                     ? 0
-                    : dataDetails.item.total_stok
+                    : dataDetails.item.total_reserved
                 )}
               </Text>
             </View>
             <View className="basis-2/5 h-[40px] m-1 bg-red-600 rounded-full shadow-sm">
               <Text className="font-bold text-xl text-white text-center mt-2">
-                Unfulfilled {" "}
+                Unfulfilled{" : "}
                 {Numbering.format(
-                  dataDetails.item.total_stok === null
+                  dataDetails.item.total_permintaan === null
                     ? 0
-                    : dataDetails.item.total_stok
+                    : dataDetails.item.total_permintaan
                 )}
               </Text>
             </View>
@@ -239,21 +244,34 @@ export default function AddPo({ route, navigation }) {
                 {data_variasi.length < 1 ? (
                   <View className="flex-1 items-center justify-center">
                     <Text className="basis-1/12 text-center">
-                      There are no variations yet, please add variations and stock
+                      There are no variations yet, please add variations and
+                      stock
                     </Text>
                   </View>
                 ) : (
                   <>
                     <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
-                      <Text className="basis-1/12 text-center text-xs">NO.</Text>
-                      <Text className="basis-2/12 text-center text-xs">COLOR</Text>
-                      <Text className="basis-2/12 text-center text-xs">SIZE</Text>
-                      <Text className="basis-2/12 text-center text-xs">AVAILABLE</Text>
+                      <Text className="basis-1/12 text-center text-xs">
+                        NO.
+                      </Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        COLOR
+                      </Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        SIZE
+                      </Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        AVAILABLE
+                      </Text>
                       <Text className="basis-2/12 text-center text-xs">
                         ORDER
                       </Text>
-                      <Text className="basis-2/12 text-center text-xs">UNFILLED</Text>
-                      <Text className="basis-1/12 text-center text-xs">ACT</Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        UNFILLED
+                      </Text>
+                      <Text className="basis-1/12 text-center text-xs">
+                        ACT
+                      </Text>
                     </View>
                     <View
                       style={{

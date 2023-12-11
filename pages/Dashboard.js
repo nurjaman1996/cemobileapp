@@ -91,7 +91,6 @@ export default function DashboardScreen({ navigation }) {
   const [permintaan, setpermintaan] = React.useState("");
   const [count, setcount] = React.useState("");
 
-
   async function getDataDashboard(idBatchs) {
     try {
       const res = await axios({
@@ -149,25 +148,22 @@ export default function DashboardScreen({ navigation }) {
   }
 
   const barData = [
-    { value: 230, label: 'Mon', frontColor: '#D13D3D' },
-    { value: 180, label: 'Tue', frontColor: '#D13D3D' },
-    { value: 195, label: 'Wed', frontColor: '#D13D3D' },
-    { value: 250, label: 'Thur', frontColor: '#D13D3D' },
-    { value: 320, label: 'Fri', frontColor: '#D13D3D' },
-    { value: 320, label: 'Sat', frontColor: '#D13D3D' },
-    { value: 320, label: 'Sun', frontColor: '#D13D3D' },
+    { value: 230, label: "Mon", frontColor: "#D13D3D" },
+    { value: 180, label: "Tue", frontColor: "#D13D3D" },
+    { value: 195, label: "Wed", frontColor: "#D13D3D" },
+    { value: 250, label: "Thur", frontColor: "#D13D3D" },
+    { value: 320, label: "Fri", frontColor: "#D13D3D" },
+    { value: 320, label: "Sat", frontColor: "#D13D3D" },
+    { value: 320, label: "Sun", frontColor: "#D13D3D" },
   ];
 
   return (
     <SafeAreaView className="bg-white h-full">
       <View className="flex flex-row items-center justify-center py-2 mb-2 px-5">
         <Text className="grow  text-[#D13D3D]">
-          <Text className="text-2xl font-bold">
-            CE APPS
-          </Text>{"\n"}
-          <Text className="truncate text-black font-medium ">
-            Hello, User
-          </Text>
+          <Text className="text-2xl font-bold">CE APPS</Text>
+          {"\n"}
+          <Text className="truncate text-black font-medium ">Hello, User</Text>
         </Text>
 
         <View className="justify-end flex flex-row">
@@ -232,34 +228,32 @@ export default function DashboardScreen({ navigation }) {
             <View className="grow text-center items-start justify-center flex flex-col">
               <View className="grow flex flex-row items-center">
                 <View className="basis-1/2 text-center items-start">
-                  <Text className="font-bold text-xl text-white">Sales Summary</Text>
-                  <Text className="font-bold text-4xl text-white mt-5">
+                  <Text className="font-bold text-xl text-white">
+                    Sales Summary
+                  </Text>
+                  <Text className="font-bold text-2xl text-white mt-5">
                     {Rupiah.format(penjualan)}
                   </Text>
                 </View>
                 <View className="basis-1/2 items-end">
-                  <Ionicons
-                    name="logo-usd"
-                    size={80}
-                    color="white"
-                  />
+                  <Ionicons name="logo-usd" size={65} color="white" />
                 </View>
               </View>
             </View>
           </View>
 
           <View className="flex flex-row mb-2 space-x-2 items-center justify-center px-4">
-            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-full px-4 shadow">
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-full px-4">
               <View className="justify-center">
-                <Text className="font-bold text-left text-white">Total Order</Text>
-                <Text className="font-bold text-left text-white">{Numbering.format(count)}</Text>
+                <Text className="font-bold text-left text-white">
+                  Total Order
+                </Text>
+                <Text className="font-bold text-left text-white">
+                  {Numbering.format(count)}
+                </Text>
               </View>
               <View className="grow text-center items-end justify-center">
-                <Ionicons
-                  name="cart-sharp"
-                  size={40}
-                  color="white"
-                />
+                <Ionicons name="cart-sharp" size={40} color="white" />
               </View>
             </View>
           </View>
@@ -275,30 +269,31 @@ export default function DashboardScreen({ navigation }) {
             />
           </View> */}
 
-
           {/* Card1 */}
           {/* Card2 */}
           <View className="flex flex-row mb-2 space-x-2 items-center justify-center px-5">
-
-            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
               <View className="justify-center">
-                <Text className="font-bold text-left text-white">Total Product</Text>
-                <Text className="font-bold text-left text-white">{total_produk}</Text>
+                <Text className="font-bold text-left text-white">
+                  Total Product
+                </Text>
+                <Text className="font-bold text-left text-white">
+                  {total_produk}
+                </Text>
               </View>
               <View className="grow text-center items-end justify-center">
-                <Ionicons
-                  name="cube-sharp"
-                  size={40}
-                  color="white"
-                />
+                <Ionicons name="cube-sharp" size={40} color="white" />
               </View>
             </View>
 
-
-            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
               <View className="justify-center">
-                <Text className="font-bold text-left text-white">Stock Available</Text>
-                <Text className="font-bold text-left text-white">{Numbering.format(stok_ready)}</Text>
+                <Text className="font-bold text-left text-white">
+                  Stock Available
+                </Text>
+                <Text className="font-bold text-left text-white">
+                  {Numbering.format(stok_ready)}
+                </Text>
               </View>
               <View className="grow text-center items-end justify-center">
                 <Ionicons
@@ -308,45 +303,45 @@ export default function DashboardScreen({ navigation }) {
                 />
               </View>
             </View>
-
           </View>
           {/* Card2 */}
           {/* Card3 */}
           <View className="flex flex-row mb-2 space-x-2 items-center justify-center px-5">
-            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
               <View className="justify-center">
-                <Text className="font-bold text-left text-white">Stock Requested</Text>
-                <Text className="font-bold text-left text-white">{Numbering.format(permintaan)}</Text>
+                <Text className="font-bold text-left text-white">
+                  Stock Requested
+                </Text>
+                <Text className="font-bold text-left text-white">
+                  {Numbering.format(permintaan)}
+                </Text>
               </View>
               <View className="grow text-center items-end justify-center">
-                <Ionicons
-                  name="bar-chart-sharp"
-                  size={40}
-                  color="white"
-                />
+                <Ionicons name="bar-chart-sharp" size={40} color="white" />
               </View>
             </View>
 
-            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4 shadow">
+            <View className="bg-[#D13D3D] h-16 rounded-lg flex flex-row space-x-3 basis-1/2 px-4">
               <View className="justify-center">
-                <Text className="font-bold text-left text-white">Stock Unfulfilled</Text>
-                <Text className="font-bold text-left text-white">{Numbering.format(stok_ready - permintaan)}</Text>
+                <Text className="font-bold text-left text-white">
+                  Stock Unfulfilled
+                </Text>
+                <Text className="font-bold text-left text-white">
+                  {Numbering.format(stok_ready - permintaan)}
+                </Text>
               </View>
               <View className="grow text-center items-end justify-center">
-                <Ionicons
-                  name="contrast-sharp"
-                  size={40}
-                  color="white"
-                />
+                <Ionicons name="contrast-sharp" size={40} color="white" />
               </View>
             </View>
-
           </View>
 
           <View className="flex flex-row space-x-2 items-center justify-center px-4">
-            <View className=" h-[50px] rounded-t-lg flex flex-row space-x-3 basis-full px-4 shadow border border-gray-200">
+            <View className=" h-[50px] rounded-t-lg flex flex-row space-x-3 basis-full px-4 border border-gray-200">
               <View className="justify-center ">
-                <Text className="font-medium text-xl text-left text-black ">Transaction History</Text>
+                <Text className="font-medium text-xl text-left text-black ">
+                  Transaction History
+                </Text>
               </View>
               <View className="grow text-center items-end justify-center">
                 <Ionicons
@@ -360,11 +355,7 @@ export default function DashboardScreen({ navigation }) {
 
           <View className="flex flex-row items-start justify-center rounded-b-lg border border-gray-200 h-[78px] mx-4">
             <View className="basis-1/6 mt-3 mr-1 items-center">
-              <Ionicons
-                name="timer-sharp"
-                size={50}
-                color="#D13D3D"
-              />
+              <Ionicons name="timer-sharp" size={50} color="#D13D3D" />
             </View>
             <View className="basis-2/4 mt-1 items-start">
               <Text className="text-lg">Celana Jogger</Text>
@@ -373,17 +364,15 @@ export default function DashboardScreen({ navigation }) {
               <Text className="text-xs">06 Dec 2023, 02:04</Text>
             </View>
             <View className="basis-1/4 mt-8 items-center">
-              <Text className="text-xs font-bold text-red-700">Rp55.120.500</Text>
+              <Text className="text-xs font-bold text-red-700">
+                Rp55.120.500
+              </Text>
             </View>
           </View>
 
           <View className="flex flex-row items-start justify-center rounded-b-lg border border-gray-200 h-[78px] mx-4">
             <View className="basis-1/6 mt-3 mr-1 items-center">
-              <Ionicons
-                name="timer-sharp"
-                size={50}
-                color="#D13D3D"
-              />
+              <Ionicons name="timer-sharp" size={50} color="#D13D3D" />
             </View>
             <View className="basis-2/4 mt-1 items-start">
               <Text className="text-lg">Jacket Winter</Text>
@@ -392,16 +381,14 @@ export default function DashboardScreen({ navigation }) {
               <Text className="text-xs">06 Dec 2023, 02:04</Text>
             </View>
             <View className="basis-1/4 mt-8 items-center">
-              <Text className="text-xs font-bold text-red-700">Rp55.120.500</Text>
+              <Text className="text-xs font-bold text-red-700">
+                Rp55.120.500
+              </Text>
             </View>
           </View>
           <View className="flex flex-row items-start justify-center rounded-b-lg border border-gray-200 h-[78px] mx-4">
             <View className="basis-1/6 mt-3 mr-1 items-center">
-              <Ionicons
-                name="timer-sharp"
-                size={50}
-                color="#D13D3D"
-              />
+              <Ionicons name="timer-sharp" size={50} color="#D13D3D" />
             </View>
             <View className="basis-2/4 mt-1 items-start">
               <Text className="text-lg">Celana Jogger</Text>
@@ -410,17 +397,16 @@ export default function DashboardScreen({ navigation }) {
               <Text className="text-xs">06 Dec 2023, 02:04</Text>
             </View>
             <View className="basis-1/4 mt-8 items-center">
-              <Text className="text-xs font-bold text-red-700">Rp55.120.500</Text>
+              <Text className="text-xs font-bold text-red-700">
+                Rp55.120.500
+              </Text>
             </View>
           </View>
-
-
 
           {/* Card3 */}
           {/* <Text>{JSON.stringify(data)}</Text> */}
         </ScrollView>
-      )
-      }
-    </SafeAreaView >
+      )}
+    </SafeAreaView>
   );
 }
