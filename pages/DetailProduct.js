@@ -231,6 +231,12 @@ export default function AddPo({ route, navigation }) {
               </Text>
             </View>
           </View>
+
+          <View className="flex flex-row px-0 mr-4 mx-4 h-[35px]">
+            <View className="basis-full h-[40px] m-1 rounded-full shadow-sm items-center">
+              <Ionicons name="create-outline" size={40} color="black" />
+            </View>
+          </View>
         </View>
         <Modal
           className="bg-black"
@@ -239,8 +245,14 @@ export default function AddPo({ route, navigation }) {
           visible={modalVisible}
         >
           <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+            <View
+              style={styles.modalView}
+              className=" bg-cyan-300 rounded-3xl border-t border-gray-200 shadow-md"
+            >
               <View className="w-full h-[70%] p-4">
+                <Text className="text-center text-xl -mt-2 font-bold mb-2">
+                  VARIATIONS
+                </Text>
                 {data_variasi.length < 1 ? (
                   <View className="flex-1 items-center justify-center">
                     <Text className="basis-1/12 text-center">
@@ -328,7 +340,7 @@ export default function AddPo({ route, navigation }) {
 
         <TouchableOpacity
           onPress={() => getVariasi()}
-          className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-20 justify-items-end"
+          className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-10 justify-items-end"
         >
           <Text className="text-white font-bold text-center text-base">
             View Stock Details
