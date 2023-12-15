@@ -245,8 +245,8 @@ export default function AddPo({ route, navigation }) {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView} className=" bg-cyan-300 rounded-3xl border-t border-gray-200 shadow-md">
-              <View className="w-full h-[70%] p-4">
-                <Text className="text-center text-xl -mt-2 font-bold mb-2">VARIATIONS</Text>
+              <View className="w-full h-[70%] mt-4">
+                <Text className="text-center text-xl -mt-2 font-bold mb-2">ADD VARIATIONS</Text>
                 {data_variasi.length < 1 ? (
                   <View className="flex-1 items-center justify-center">
                     <Text className="basis-1/12 text-center">
@@ -255,7 +255,52 @@ export default function AddPo({ route, navigation }) {
                   </View>
                 ) : (
                   <>
-                    <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
+                    <View className="bg-white p-2 shadow-sm mt-4">
+                      <View className="flex flex-row border-b border-gray-200 pb-2 mt-1 ml-1">
+                        <Text className="basis-1/2 text-left font-medium">VARIATION</Text>
+                        <Text className="basis-1/2 text-right font-medium text-red-600">Change</Text>
+                      </View>
+
+                      <View className="flex flex-row border-b border-gray-200 pb-2 mb-2 ml-1">
+                        <View className="basis-full flex flex-row bg-cy">
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium  text-red-600">Navy</Text>
+                          </View>
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium  text-red-600">Black</Text>
+                          </View>
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium">+ Add</Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+
+                    <View className="bg-white p-2 shadow-sm mt-4">
+                      <View className="flex flex-row border-b border-gray-200 pb-2 mt-1 ml-1">
+                        <Text className="basis-1/2 text-left font-medium">SIZE</Text>
+                        <Text className="basis-1/2 text-right font-medium text-red-600">Change</Text>
+                      </View>
+
+                      <View className="flex flex-row border-b border-gray-200 pb-2 mb-2 ml-1">
+                        <View className="basis-full flex flex-row bg-cy">
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium  text-red-600">M</Text>
+                          </View>
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium  text-red-600">L</Text>
+                          </View>
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium  text-red-600">XL</Text>
+                          </View>
+                          <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
+                            <Text className="font-medium">+ Add</Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+
+                    {/* <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
                       <Text className="basis-1/12 text-center text-xs">NO.</Text>
                       <Text className="basis-2/12 text-center text-xs">COLOR</Text>
                       <Text className="basis-2/12 text-center text-xs">SIZE</Text>
@@ -279,7 +324,7 @@ export default function AddPo({ route, navigation }) {
                           itemProduct(item, index)
                         }
                       />
-                    </View>
+                    </View> */}
                   </>
                 )}
               </View>

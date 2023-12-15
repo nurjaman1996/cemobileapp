@@ -85,7 +85,7 @@ export default function AddPurchasing({ route, navigation }) {
           automaticallyAdjustKeyboardInsets={true}
           className="flex-col h-full space-y-5 px-2 pt-5"
         >
-          <View className="grow justify-start items-start px-2">
+          {/* <View className="grow justify-start items-start px-2">
             <Text className="text-xs mb-1 font-bold">BATCH</Text>
             <TextInput
               value={dataDetails.id_batch}
@@ -172,7 +172,126 @@ export default function AddPurchasing({ route, navigation }) {
                 setv_qty(e);
               }}
             />
+          </View> */}
+
+          <View className="flex flex-row px-1">
+            <Text className="basis-1/2 text-left font-medium">
+              Set stock for all variations,
+            </Text>
+            <Text className="basis-1/2 text-right font-bold text-red-600">
+              Mass Update Stok
+            </Text>
           </View>
+          <View className="flex flex-row justify-center items-center rounded-md h-10 px-2 border-b border-t border-gray-300">
+            <Text className="basis-2/3 text-left text-md font-bold">VARIATION</Text>
+            <Text className="basis-1/4 text-right text-md font-bold">STOCK</Text>
+          </View>
+
+          <View className="px-6">
+            <Text className="font-medium">
+              Navy
+            </Text>
+          </View>
+
+          <View className="flex flex-row px-6 border-t border-b border-gray-200 pt-2 pb-2 -mb-4" >
+            <View className="basis-10/12  h-8 justify-center">
+              <Text>
+                L
+              </Text>
+            </View>
+            <View className="basis-1/6 border border-gray-200 h-8 justify-center">
+              <Text className="text-center">
+                50
+              </Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row px-6 border-t border-b border-gray-200 pt-2 pb-2 -mb-4" >
+            <View className="basis-10/12  h-8 justify-center">
+              <Text>
+                M
+              </Text>
+            </View>
+            <View className="basis-1/6 border border-gray-200 h-8 justify-center">
+              <Text className="text-center">
+                50
+              </Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row px-6 border-t border-b border-gray-200 pt-2 pb-2" >
+            <View className="basis-10/12  h-8 justify-center">
+              <Text>
+                XL
+              </Text>
+            </View>
+            <View className="basis-1/6 border border-gray-200 h-8 justify-center">
+              <Text className="text-center">
+                50
+              </Text>
+            </View>
+          </View>
+
+          <View className="px-6">
+            <Text className="font-medium">
+              BLACK
+            </Text>
+          </View>
+
+          <View className="flex flex-row px-6 border-t border-b border-gray-200 pt-2 pb-2 -mb-4" >
+            <View className="basis-10/12  h-8 justify-center">
+              <Text>
+                L
+              </Text>
+            </View>
+            <View className="basis-1/6 border border-gray-200 h-8 justify-center">
+              <Text className="text-center">
+                50
+              </Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row px-6 border-t border-b border-gray-200 pt-2 pb-2 -mb-4" >
+            <View className="basis-10/12  h-8 justify-center">
+              <Text>
+                M
+              </Text>
+            </View>
+            <View className="basis-1/6 border border-gray-200 h-8 justify-center">
+              <Text className="text-center">
+                50
+              </Text>
+            </View>
+          </View>
+
+          <View className="flex flex-row px-6 border-t border-b border-gray-200 pt-2 pb-2" >
+            <View className="basis-10/12  h-8 justify-center">
+              <Text>
+                XL
+              </Text>
+            </View>
+            <View className="basis-1/6 border border-gray-200 h-8 justify-center">
+              <Text className="text-center">
+                50
+              </Text>
+            </View>
+          </View>
+
+
+          {/* <View
+          style={{
+            flex: 1,
+          }}
+          >
+            <FlashList
+              estimatedItemSize={200}
+              keyExtractor={(item, index) => index.toString()}
+              data={data_variasi}
+              renderItem={({ item, index }) =>
+                itemProduct(item, index)
+              }
+            />
+          </View> */}
 
           <View className="grow justify-start items-start px-2 w-full">
             <TouchableOpacity
