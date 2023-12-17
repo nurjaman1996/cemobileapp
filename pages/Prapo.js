@@ -149,11 +149,32 @@ export default function PrapoScreen({ navigation }) {
           </View>
 
           <TouchableOpacity
-            className="bg-red-600  py-2 px-2 rounded-xl"
+            className="mr-4"
             onPress={() => {
               Alert.alert(
-                `Delete Data`,
-                `Klik Delete untuk Hapus ${item.id_po}`,
+                `Edit`,
+                `Click Edit to Change This Data ${item.id_po}`,
+                [
+                  {
+                    text: "Cancel",
+                  },
+                  {
+                    text: "Edit",
+                    onPress: () => deleteBatch(item.id_batch, item.id_po),
+                  },
+                ]
+              );
+            }}
+          >
+            <Ionicons name="create-outline" size={25} color="black" />
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            className="-mr-2"
+            onPress={() => {
+              Alert.alert(
+                `Delete`,
+                `Are You Sure to Delete This Data? ${item.id_po}`,
                 [
                   {
                     text: "Cancel",
@@ -166,7 +187,7 @@ export default function PrapoScreen({ navigation }) {
               );
             }}
           >
-            <Text className="font-bold" style={{ color: "white" }}>Delete PO</Text>
+            <Ionicons name="trash-outline" size={25} color="red" />
           </TouchableOpacity>
         </View>
       </View>

@@ -97,7 +97,7 @@ export default function AddPo({ route, navigation }) {
           autoscrollToTopThreshold: 100,
         }}
         automaticallyAdjustKeyboardInsets={true}
-        className="h-full"
+        className="h-[80%]"
       >
         <View className="-mb-5">
           <View className="aspect-square">
@@ -114,7 +114,7 @@ export default function AddPo({ route, navigation }) {
           </View>
         </View>
 
-        <View className="-mt-5 -mb-5 z-50 bg-green-600 w-[50%] mx-auto rounded-3xl p-2 flex items-center">
+        <View className="-mt-5 -mb-5 z-50 bg-green-600 w-[50%] mx-auto rounded-full p-2 flex items-center">
           <Text className="font-bold text-xl text-white">
             Available Stock{" : "}
             {Numbering.format(
@@ -209,8 +209,8 @@ export default function AddPo({ route, navigation }) {
           </View>
 
           <View className="flex flex-row px-0 mr-4 mx-4 mt-2 h-[35px] justify-center">
-            <View className="basis-2/5 h-[40px] m-1 bg-black rounded-full shadow-sm ">
-              <Text className="font-bold text-xl text-white text-center mt-2">
+            <View className="basis-2/5 h-auto m-1 bg-black rounded-md shadow-sm ">
+              <Text className="font-bold text-md text-white text-center mt-1.5">
                 Orders{" : "}
                 {Numbering.format(
                   dataDetails.item.total_reserved === null
@@ -219,8 +219,8 @@ export default function AddPo({ route, navigation }) {
                 )}
               </Text>
             </View>
-            <View className="basis-2/5 h-[40px] m-1 bg-red-600 rounded-full shadow-sm">
-              <Text className="font-bold text-xl text-white text-center mt-2">
+            <View className="basis-2/5 h-auto m-1 bg-red-600 rounded-md shadow-sm">
+              <Text className="font-bold text-md text-white text-center mt-1.5">
                 Unfulfilled{" : "}
                 {Numbering.format(
                   dataDetails.item.total_permintaan === null
@@ -231,7 +231,7 @@ export default function AddPo({ route, navigation }) {
             </View>
           </View>
 
-          <View className="flex flex-row px-0 mr-4 mx-4 h-[35px]">
+          <View className="flex flex-row px-0 mr-4 mx-4 h-[35px] mt-5">
             <View className="basis-full h-[40px] m-1 rounded-full shadow-sm items-center">
               <Ionicons name="create-outline" size={40} color="black" />
             </View>
@@ -388,15 +388,15 @@ export default function AddPo({ route, navigation }) {
           </Text>
         </TouchableOpacity> */}
 
-        <TouchableOpacity
-          onPress={() => getVariasi()}
-          className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-10 justify-items-end"
-        >
-          <Text className="text-white font-bold text-center text-base">
-            View Stock Details
-          </Text>
-        </TouchableOpacity>
       </ScrollView>
+      <TouchableOpacity
+        onPress={() => getVariasi()}
+        className="mx-3 bg-red-600 px-4 py-3 rounded-lg my-3 justify-items-end"
+      >
+        <Text className="text-white font-bold text-center text-base">
+          View Stock Details
+        </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

@@ -76,7 +76,7 @@ export default function BatchScreen({ navigation }) {
   function itemProduct(item) {
     return (
       <View key={item.id} className="mt-2 px-2" style={{ width: width }}>
-        <View className="px-2 bg-white h-auto p-5 rounded-md flex flex-row items-center rounded-2xl  shadow-md">
+        <View className="px-2 bg-white h-auto p-5 flex flex-row items-center rounded-s-2xl  shadow-md">
           <View className="grow space-y-1">
             <Text className="font-bold">{item.id_batch}</Text>
             <Text>Tanggal Keberangkatan : {item.tanggal_batch}</Text>
@@ -85,11 +85,30 @@ export default function BatchScreen({ navigation }) {
           </View>
 
           <TouchableOpacity
-            className="bg-red-600 py-2 px-2 rounded-xl"
+            className="mr-4"
             onPress={() => {
               Alert.alert(
-                `Delete Data`,
-                `Klik Delete untuk Hapus ${item.id_batch}`,
+                `Edit`,
+                `Click Edit to Change This Data ${item.id_batch}`,
+                [
+                  {
+                    text: "Cancel",
+                  },
+                  { text: "Edit", onPress: () => deleteBatch(item.id_batch) },
+                ]
+              );
+            }}
+          >
+            <Ionicons name="create-outline" size={25} color="black" />
+
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            className="-mr-2"
+            onPress={() => {
+              Alert.alert(
+                `Delete`,
+                `Are You Sure to Delete This Data? ${item.id_batch}`,
                 [
                   {
                     text: "Cancel",
@@ -99,7 +118,7 @@ export default function BatchScreen({ navigation }) {
               );
             }}
           >
-            <Text className="font-bold" style={{ color: "white" }}>Delete Batch</Text>
+            <Ionicons name="trash-outline" size={25} color="red" />
           </TouchableOpacity>
         </View>
       </View>
