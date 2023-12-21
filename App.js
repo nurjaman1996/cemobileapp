@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import * as ImagePicker from "expo-image-picker";
 
 import Dashboard from "./pages/Dashboard";
 import Batch from "./pages/Batch";
@@ -24,6 +25,12 @@ function MainTab() {
   const [SplashScreen, setSplashScreen] = React.useState(true);
 
   React.useEffect(() => {
+    (async () => {
+      if (Platform.OS === "ios") {
+        ImagePicker.requestCameraPermissionsAsync();
+      }
+    })();
+
     setTimeout(() => {
       setSplashScreen(false);
     }, 2500);

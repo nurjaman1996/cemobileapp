@@ -13,6 +13,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity,
+  Modal,
 } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import axios from "axios";
@@ -180,6 +181,8 @@ export default function DetailPage({ route, navigation }) {
 
   const [image, setImage] = React.useState(null);
 
+  const [modalVisible, setModalVisible] = React.useState(false);
+
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -199,6 +202,32 @@ export default function DetailPage({ route, navigation }) {
       let type = match ? `image/${match[1]}` : `image`;
 
       setv_file({ uri: localUri, name: filename, type });
+
+      setModalVisible(false);
+    }
+  };
+
+  const pickImageCamera = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchCameraAsync({
+      // mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      delete result.cancelled;
+      setImage(result.assets[0].uri);
+
+      let localUri = result.assets[0].uri;
+      let filename = localUri.split("/").pop();
+
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+
+      setv_file({ uri: localUri, name: filename, type });
+
+      setModalVisible(false);
     }
   };
 
@@ -208,7 +237,9 @@ export default function DetailPage({ route, navigation }) {
         <View className="p-4 flex-row space-x-2 justify-center items-center">
           <Pressable
             disabled={disabledForm}
-            onPress={pickImage}
+            onPress={() => {
+              setModalVisible(true);
+            }}
             className="basis-1/2 aspect-square border flex justify-center items-center rounded-lg border-[#8EA4BB]"
           >
             {image != null ? (
@@ -398,7 +429,7 @@ export default function DetailPage({ route, navigation }) {
           />
         </View>
 
-        <View className="mt-5 mb-8 justify-start items-start px-2 w-full shadow-sm">
+        <View className="mt-5 mb-8 justify-start items-start px-2 w-full">
           <TouchableOpacity
             disabled={disabledForm}
             style={disabledForm ? styles.buttonDisabled : styles.button}
@@ -438,6 +469,41 @@ export default function DetailPage({ route, navigation }) {
             />
           </View>
         </View>
+
+        <Modal
+          animationType="slider"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <TouchableOpacity
+            style={styles.centeredView}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+            }}
+          ></TouchableOpacity>
+          <View style={styles.modalView} className="flex flex-col gap-2">
+            <TouchableOpacity
+              style={disabledForm ? styles.buttonDisabled : styles.button}
+              onPress={() => {
+                pickImageCamera();
+              }}
+            >
+              <Text style={styles.text}>Take Photo From Camera</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={disabledForm ? styles.buttonDisabled : styles.button}
+              onPress={() => {
+                pickImage();
+              }}
+            >
+              <Text style={styles.text}>Take Photo From Gallery</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </SafeAreaView>
     </TouchableWithoutFeedback>
   );
@@ -491,5 +557,19 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: "#8EA4BB",
     textAlign: "center",
+  },
+
+  centeredView: {
+    backgroundColor: "white",
+    opacity: 0.5,
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalView: {
+    backgroundColor: "white",
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
   },
 });

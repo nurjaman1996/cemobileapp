@@ -336,7 +336,7 @@ export default function DashboardScreen({ navigation }) {
             </View>
           </View>
 
-          <View className="flex flex-row space-x-2 items-center justify-center px-4">
+          {/* <View className="flex flex-row space-x-2 items-center justify-center px-4">
             <View className=" h-[50px] rounded-t-lg flex flex-row space-x-3 basis-full px-4 border border-gray-200">
               <View className="justify-center ">
                 <Text className="font-medium text-xl text-left text-black ">
@@ -401,7 +401,7 @@ export default function DashboardScreen({ navigation }) {
                 Rp55.120.500
               </Text>
             </View>
-          </View>
+          </View> */}
 
           {/* Card3 */}
           {/* <Text>{JSON.stringify(data)}</Text> */}

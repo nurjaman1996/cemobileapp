@@ -85,7 +85,7 @@ export default function AddPurchasing({ route, navigation }) {
           automaticallyAdjustKeyboardInsets={true}
           className="flex-col h-full space-y-5 px-2 pt-5"
         >
-          {/* <View className="grow justify-start items-start px-2">
+          <View className="grow justify-start items-start px-2">
             <Text className="text-xs mb-1 font-bold">BATCH</Text>
             <TextInput
               value={dataDetails.id_batch}
@@ -172,9 +172,9 @@ export default function AddPurchasing({ route, navigation }) {
                 setv_qty(e);
               }}
             />
-          </View> */}
+          </View>
 
-          <View className="flex flex-row px-1">
+          {/* <View className="flex flex-row px-1">
             <Text className="basis-1/2 text-left font-medium">
               Set stock for all variations,
             </Text>
@@ -275,8 +275,7 @@ export default function AddPurchasing({ route, navigation }) {
                 50
               </Text>
             </View>
-          </View>
-
+          </View> */}
 
           {/* <View
           style={{

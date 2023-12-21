@@ -131,10 +131,11 @@ export default function AddPo({ route, navigation }) {
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"
-                className={`${dataDetails.item.produk == "null"
-                  ? "text-red-500"
-                  : "text-[#2e2e2e]"
-                  } font-bold text-xl `}
+                className={`${
+                  dataDetails.item.produk == "null"
+                    ? "text-red-500"
+                    : "text-[#2e2e2e]"
+                } font-bold text-xl `}
               >
                 {dataDetails.item.produk == "null"
                   ? "Belum ada nama"
@@ -230,12 +231,6 @@ export default function AddPo({ route, navigation }) {
               </Text>
             </View>
           </View>
-
-          <View className="flex flex-row px-0 mr-4 mx-4 h-[35px] mt-5">
-            <View className="basis-full h-[40px] m-1 rounded-full shadow-sm items-center">
-              <Ionicons name="create-outline" size={40} color="black" />
-            </View>
-          </View>
         </View>
         <Modal
           className="bg-black"
@@ -244,15 +239,25 @@ export default function AddPo({ route, navigation }) {
           visible={modalVisible}
         >
           <View style={styles.centeredView}>
-            <View className="w-full h-[70%] mt-4">
-              <Text className="text-center text-xl -mt-2 font-bold mb-2">ADD VARIATIONS</Text>
-            </View>
-            <View style={styles.modalView}
-              className=" bg-cyan-300 rounded-3xl border-t border-gray-200 shadow-md">
-              <View className="w-full h-[70%] p-4">
-                <Text className="text-center text-xl -mt-2 font-bold mb-2">
-                  VARIATIONS
-                </Text>
+            <View
+              style={styles.modalView}
+              className=" bg-cyan-300 rounded-3xl border-t border-gray-200 shadow-md"
+            >
+              <View className="w-full h-[70%] px-4 pb-4 pt-2">
+                <View className="flex flex-row items-center justify-start mb-2 px-4">
+                  <Text className="text-center text-xl font-bold">
+                    VARIATIONS
+                  </Text>
+
+                  <TouchableOpacity
+                    onPress={() => setModalVisible(!modalVisible)}
+                    className="ml-auto px-3 py-2 rounded-md"
+                  >
+                    <Text className="text-blue-500 underline font-bold text-center text-sm">
+                      Back
+                    </Text>
+                  </TouchableOpacity>
+                </View>
                 {data_variasi.length < 1 ? (
                   <View className="flex-1 items-center justify-center">
                     <Text className="basis-1/12 text-center">
@@ -262,19 +267,27 @@ export default function AddPo({ route, navigation }) {
                   </View>
                 ) : (
                   <>
-                    <View className="bg-white p-2 shadow-sm mt-4">
+                    {/* <View className="bg-white p-2 shadow-sm mt-4">
                       <View className="flex flex-row border-b border-gray-200 pb-2 mt-1 ml-1">
-                        <Text className="basis-1/2 text-left font-medium">VARIATION</Text>
-                        <Text className="basis-1/2 text-right font-medium text-red-600">Change</Text>
+                        <Text className="basis-1/2 text-left font-medium">
+                          VARIATION
+                        </Text>
+                        <Text className="basis-1/2 text-right font-medium text-red-600">
+                          Change
+                        </Text>
                       </View>
 
                       <View className="flex flex-row border-b border-gray-200 pb-2 mb-2 ml-1">
                         <View className="basis-full flex flex-row bg-cy">
                           <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
-                            <Text className="font-medium  text-red-600">Navy</Text>
+                            <Text className="font-medium  text-red-600">
+                              Navy
+                            </Text>
                           </View>
                           <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
-                            <Text className="font-medium  text-red-600">Black</Text>
+                            <Text className="font-medium  text-red-600">
+                              Black
+                            </Text>
                           </View>
                           <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
                             <Text className="font-medium">+ Add</Text>
@@ -285,8 +298,12 @@ export default function AddPo({ route, navigation }) {
 
                     <View className="bg-white p-2 shadow-sm mt-4">
                       <View className="flex flex-row border-b border-gray-200 pb-2 mt-1 ml-1">
-                        <Text className="basis-1/2 text-left font-medium">SIZE</Text>
-                        <Text className="basis-1/2 text-right font-medium text-red-600">Change</Text>
+                        <Text className="basis-1/2 text-left font-medium">
+                          SIZE
+                        </Text>
+                        <Text className="basis-1/2 text-right font-medium text-red-600">
+                          Change
+                        </Text>
                       </View>
 
                       <View className="flex flex-row border-b border-gray-200 pb-2 mb-2 ml-1">
@@ -298,7 +315,9 @@ export default function AddPo({ route, navigation }) {
                             <Text className="font-medium  text-red-600">L</Text>
                           </View>
                           <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
-                            <Text className="font-medium  text-red-600">XL</Text>
+                            <Text className="font-medium  text-red-600">
+                              XL
+                            </Text>
                           </View>
                           <View className="basis-grow text-left p-3 mt-2  border rounded-md border-red-600 mr-2">
                             <Text className="font-medium">+ Add</Text>
@@ -307,11 +326,21 @@ export default function AddPo({ route, navigation }) {
                       </View>
                     </View>
 
-                    {/* <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
-                      <Text className="basis-1/12 text-center text-xs">NO.</Text>
-                      <Text className="basis-2/12 text-center text-xs">COLOR</Text>
-                      <Text className="basis-2/12 text-center text-xs">SIZE</Text>
-                      <Text className="basis-2/12 text-center text-xs">AVAILABLE</Text>
+                    <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
+                      <Text className="basis-1/12 text-center text-xs">
+                        NO.
+                      </Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        COLOR
+                      </Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        SIZE
+                      </Text>
+                      <Text className="basis-2/12 text-center text-xs">
+                        AVAILABLE
+                      </Text>
+                    </View> */}
+
                     <View className="flex-row justify-center items-center rounded-md h-10 mb-2 px-2 border-b border-t border-gray-300">
                       <Text className="basis-1/12 text-center text-xs">
                         NO.
@@ -329,7 +358,7 @@ export default function AddPo({ route, navigation }) {
                         ORDER
                       </Text>
                       <Text className="basis-2/12 text-center text-xs">
-                        UNFILLED
+                        SISA
                       </Text>
                       <Text className="basis-1/12 text-center text-xs">
                         ACT
@@ -348,7 +377,7 @@ export default function AddPo({ route, navigation }) {
                           itemProduct(item, index)
                         }
                       />
-                    </View> */}
+                    </View>
                   </>
                 )}
               </View>
@@ -362,19 +391,25 @@ export default function AddPo({ route, navigation }) {
                       item: null,
                     });
                   }}
-                  className="basis-2/3 bg-red-600 px-3 py-2 rounded-md"
+                  className="basis-1/2 bg-red-600 px-3 py-2 rounded-md"
                 >
                   <Text className="text-white font-bold text-center text-sm">
-                    Add Variations & New Stock
+                    Edit Stock
                   </Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                  onPress={() => setModalVisible(!modalVisible)}
-                  className="grow bg-black px-3 py-2 rounded-md"
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                    navigation.navigate("AddPurchasing", {
+                      dataDetails: dataDetails.item,
+                      item: null,
+                    });
+                  }}
+                  className="basis-1/2 bg-red-600 px-3 py-2 rounded-md"
                 >
                   <Text className="text-white font-bold text-center text-sm">
-                    Back
+                    Add New Variations
                   </Text>
                 </TouchableOpacity>
               </View>
@@ -387,7 +422,6 @@ export default function AddPo({ route, navigation }) {
             Lihat Details Stok
           </Text>
         </TouchableOpacity> */}
-
       </ScrollView>
       <TouchableOpacity
         onPress={() => getVariasi()}
