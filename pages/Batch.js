@@ -39,7 +39,7 @@ export default function BatchScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/getbatch`,
+        url: `${BASE_URL}/purchaseorder/getbatch`,
       });
       setDataBatch(res.data.data);
       setisLodaing(false);
@@ -55,7 +55,7 @@ export default function BatchScreen({ navigation }) {
     try {
       await axios({
         method: "delete",
-        url: `http://139.180.130.182:4000/purchaseorder/deletebatch/${id_batch}`,
+        url: `${BASE_URL}/purchaseorder/deletebatch/${id_batch}`,
       });
 
       getDataBatch();
@@ -76,6 +76,7 @@ export default function BatchScreen({ navigation }) {
   function itemProduct(item) {
     return (
       <View key={item.id} className="mt-2 px-2" style={{ width: width }}>
+        <Text>{BASE_URL}asdasd</Text>
         <View className="px-2 bg-white h-auto p-5 flex flex-row items-center rounded-s-2xl  shadow-md">
           <View className="grow space-y-1">
             <Text className="font-bold">{item.id_batch}</Text>
@@ -100,7 +101,6 @@ export default function BatchScreen({ navigation }) {
             }}
           >
             <Ionicons name="create-outline" size={25} color="black" />
-
           </TouchableOpacity>
 
           <TouchableOpacity

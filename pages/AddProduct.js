@@ -45,7 +45,7 @@ export default function DetailPage({ route, navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/getpobybatch/${id_batch}`,
+        url: `${BASE_URL}/purchaseorder/getpobybatch/${id_batch}`,
       });
 
       res.data.data.map((dtas) => {
@@ -71,7 +71,7 @@ export default function DetailPage({ route, navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/supplier`,
+        url: `${BASE_URL}/supplier`,
       });
 
       res.data.data.map((dtas) => {
@@ -160,7 +160,7 @@ export default function DetailPage({ route, navigation }) {
 
       await axios({
         method: "post",
-        url: `http://139.180.130.182:4000/iventory`,
+        url: `${BASE_URL}/iventory`,
         headers: {
           "content-type": "multipart/form-data",
         },

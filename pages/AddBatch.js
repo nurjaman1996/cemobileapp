@@ -52,7 +52,7 @@ export default function AddBatch({ route, navigation }) {
     } else {
       await axios({
         method: "post",
-        url: `http://139.180.130.182:4000/purchaseorder/insertbatch`,
+        url: `${BASE_URL}/purchaseorder/insertbatch`,
         data: {
           tanggal_batch: dayjs(dateStart).format("YYYY-MM-DD"),
           country: country,

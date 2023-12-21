@@ -57,7 +57,7 @@ export default function PrapoScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/getbatch`,
+        url: `${BASE_URL}/purchaseorder/getbatch`,
       });
 
       res.data.data.map((dtas) => {
@@ -99,7 +99,7 @@ export default function PrapoScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/getpobybatch/${id_batch}`,
+        url: `${BASE_URL}/purchaseorder/getpobybatch/${id_batch}`,
       }).catch(function (error) {
         // handle error
         console.log(error);
@@ -119,7 +119,7 @@ export default function PrapoScreen({ navigation }) {
     try {
       await axios({
         method: "delete",
-        url: `http://139.180.130.182:4000/purchaseorder/deletepo/${id_batch}/${id_po}`,
+        url: `${BASE_URL}/purchaseorder/deletepo/${id_batch}/${id_po}`,
       });
 
       getDataBatch();

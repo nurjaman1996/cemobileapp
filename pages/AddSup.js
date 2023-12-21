@@ -54,7 +54,7 @@ export default function AddSup({ route, navigation }) {
     } else {
       await axios({
         method: "post",
-        url: `http://139.180.130.182:4000/supplier`,
+        url: `${BASE_URL}/supplier`,
         data: {
           supplier: v_supplier,
           contact: v_kontak,

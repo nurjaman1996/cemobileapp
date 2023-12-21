@@ -59,7 +59,7 @@ export default function AddPo({ route, navigation }) {
     } else {
       await axios({
         method: "post",
-        url: `http://139.180.130.182:4000/purchaseorder/insertpo`,
+        url: `${BASE_URL}/purchaseorder/insertpo`,
         data: {
           id_batch: id_batch,
           tanggal_startpo: dayjs(dateStart).format("YYYY-MM-DD"),

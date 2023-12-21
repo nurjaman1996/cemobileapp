@@ -41,7 +41,7 @@ export default function DashboardScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/getbatch`,
+        url: `${BASE_URL}/purchaseorder/getbatch`,
       });
 
       res.data.data.map((dtas) => {
@@ -95,7 +95,7 @@ export default function DashboardScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/dashboard/${idBatchs}`,
+        url: `${BASE_URL}/purchaseorder/dashboard/${idBatchs}`,
       });
 
       setpenjualan(

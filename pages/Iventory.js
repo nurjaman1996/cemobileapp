@@ -47,7 +47,7 @@ export default function IventoryScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `http://139.180.130.182:4000/purchaseorder/getbatch`,
+        url: `${BASE_URL}/purchaseorder/getbatch`,
       });
 
       res.data.data.map((dtas) => {
@@ -93,7 +93,7 @@ export default function IventoryScreen({ navigation }) {
   async function getDataProduct(data_batch) {
     try {
       const res = await axios.get(
-        `http://139.180.130.182:4000/iventory?id_batch=${data_batch}`
+        `${BASE_URL}/iventory?id_batch=${data_batch}`
       );
 
       setdataProduct(res.data.data);
@@ -131,7 +131,7 @@ export default function IventoryScreen({ navigation }) {
           <View className="w-full aspect-square border-gray-200 border-b">
             <Image
               source={{
-                uri: `http://139.180.130.182:4000/assets/img/${item.images}`,
+                uri: `${BASE_URL}/assets/img/${item.images}`,
               }}
               style={{
                 width: "100%",
@@ -148,8 +148,9 @@ export default function IventoryScreen({ navigation }) {
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"
-                className={`${item.produk == "null" ? "text-red-500" : "text-[#2e2e2e]"
-                  } font-bold text-left text-md`}
+                className={`${
+                  item.produk == "null" ? "text-red-500" : "text-[#2e2e2e]"
+                } font-bold text-left text-md`}
               >
                 {item.produk == "null" ? "Belum ada nama" : item.produk}
               </Text>
@@ -187,11 +188,8 @@ export default function IventoryScreen({ navigation }) {
             </Text> */}
 
             <View className="text-xs flex flex-row gap-2">
-
               <View className="text-black flex flex-row text-xs ml-auto">
-                <Text className="basis-1/2 font-medium text-xs">
-                  Order
-                </Text>
+                <Text className="basis-1/2 font-medium text-xs">Order</Text>
               </View>
 
               <View className="text-black flex flex-row text-xs ml-auto">
@@ -202,11 +200,9 @@ export default function IventoryScreen({ navigation }) {
                   )}
                 </Text>
               </View>
-
             </View>
 
             <View className="text-xs flex flex-row gap-2">
-
               <View className="text-black flex flex-row text-xs ml-auto">
                 <Text className="basis-1/2 font-medium text-xs  text-green-500">
                   Available
@@ -221,11 +217,9 @@ export default function IventoryScreen({ navigation }) {
                   )}
                 </Text>
               </View>
-
             </View>
 
             <View className="text-xs flex flex-row gap-2">
-
               <View className="text-black flex flex-row text-xs ml-auto">
                 <Text className="basis-1/2 font-medium text-xs  text-red-600">
                   Unfulfilled
@@ -240,12 +234,10 @@ export default function IventoryScreen({ navigation }) {
                   )}
                 </Text>
               </View>
-
             </View>
-
           </View>
-        </View >
-      </Pressable >
+        </View>
+      </Pressable>
     );
   }
 

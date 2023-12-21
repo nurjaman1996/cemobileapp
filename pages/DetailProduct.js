@@ -43,9 +43,7 @@ export default function AddPo({ route, navigation }) {
 
   async function getVariasi() {
     axios
-      .get(
-        `http://139.180.130.182:4000/variasi/getvariasi/${dataDetails.item.id_produk}`
-      )
+      .get(`${BASE_URL}/variasi/getvariasi/${dataDetails.item.id_produk}`)
       .then(function (response) {
         setdata_variasi(response.data.data);
         setModalVisible(true);
@@ -103,7 +101,7 @@ export default function AddPo({ route, navigation }) {
           <View className="aspect-square">
             <Image
               source={{
-                uri: `http://139.180.130.182:4000/assets/img/${dataDetails.item.images}`,
+                uri: `${BASE_URL}/assets/img/${dataDetails.item.images}`,
               }}
               style={{
                 width: "100%",
@@ -403,7 +401,7 @@ export default function AddPo({ route, navigation }) {
                     setModalVisible(!modalVisible);
                     navigation.navigate("AddPurchasing", {
                       dataDetails: dataDetails.item,
-                      item: null,
+                      item: data_variasi,
                     });
                   }}
                   className="basis-1/2 bg-red-600 px-3 py-2 rounded-md"
