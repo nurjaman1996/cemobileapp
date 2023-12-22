@@ -20,7 +20,6 @@ import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dayjs from "dayjs";
-import { BASE_URL } from "@env";
 
 export default function AddPo({ route, navigation }) {
   const { id_batch } = route.params;
@@ -59,7 +58,7 @@ export default function AddPo({ route, navigation }) {
     } else {
       await axios({
         method: "post",
-        url: `${BASE_URL}/purchaseorder/insertpo`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/insertpo`,
         data: {
           id_batch: id_batch,
           tanggal_startpo: dayjs(dateStart).format("YYYY-MM-DD"),

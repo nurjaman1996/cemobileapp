@@ -20,7 +20,6 @@ import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dayjs from "dayjs";
-import { BASE_URL } from "@env";
 
 export default function AddBatch({ route, navigation }) {
   const [showStart, setShowStart] = React.useState(false);
@@ -52,7 +51,7 @@ export default function AddBatch({ route, navigation }) {
     } else {
       await axios({
         method: "post",
-        url: `${BASE_URL}/purchaseorder/insertbatch`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/insertbatch`,
         data: {
           tanggal_batch: dayjs(dateStart).format("YYYY-MM-DD"),
           country: country,

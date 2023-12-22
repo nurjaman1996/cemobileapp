@@ -14,7 +14,6 @@ import { useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DropDownPicker from "react-native-dropdown-picker";
-import { BASE_URL } from "@env";
 import { BarChart } from "react-native-gifted-charts";
 
 let Rupiah = new Intl.NumberFormat("id-ID", {
@@ -41,7 +40,7 @@ export default function DashboardScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/getbatch`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/getbatch`,
       });
 
       res.data.data.map((dtas) => {
@@ -95,7 +94,7 @@ export default function DashboardScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/dashboard/${idBatchs}`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/dashboard/${idBatchs}`,
       });
 
       setpenjualan(

@@ -20,7 +20,6 @@ import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dayjs from "dayjs";
-import { BASE_URL } from "@env";
 
 export default function AddSup({ route, navigation }) {
   const [showStart, setShowStart] = React.useState(false);
@@ -54,7 +53,7 @@ export default function AddSup({ route, navigation }) {
     } else {
       await axios({
         method: "post",
-        url: `${BASE_URL}/supplier`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/supplier`,
         data: {
           supplier: v_supplier,
           contact: v_kontak,

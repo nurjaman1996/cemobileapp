@@ -20,7 +20,6 @@ import { useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DropDownPicker from "react-native-dropdown-picker";
-import { BASE_URL } from "@env";
 
 const width = Dimensions.get("window").width;
 
@@ -39,7 +38,7 @@ export default function BatchScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/getbatch`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/getbatch`,
       });
       setDataBatch(res.data.data);
       setisLodaing(false);
@@ -55,7 +54,7 @@ export default function BatchScreen({ navigation }) {
     try {
       await axios({
         method: "delete",
-        url: `${BASE_URL}/purchaseorder/deletebatch/${id_batch}`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/deletebatch/${id_batch}`,
       });
 
       getDataBatch();
@@ -76,7 +75,6 @@ export default function BatchScreen({ navigation }) {
   function itemProduct(item) {
     return (
       <View key={item.id} className="mt-2 px-2" style={{ width: width }}>
-        <Text>{BASE_URL}asdasd</Text>
         <View className="px-2 bg-white h-auto p-5 flex flex-row items-center rounded-s-2xl  shadow-md">
           <View className="grow space-y-1">
             <Text className="font-bold">{item.id_batch}</Text>

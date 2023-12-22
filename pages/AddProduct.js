@@ -19,7 +19,6 @@ import DropDownPicker from "react-native-dropdown-picker";
 import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useFocusEffect } from "@react-navigation/native";
-import { BASE_URL } from "@env";
 import * as ImagePicker from "expo-image-picker";
 import { Pressable } from "react-native";
 let Rupiah = new Intl.NumberFormat("id-ID", {
@@ -45,7 +44,7 @@ export default function DetailPage({ route, navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/getpobybatch/${id_batch}`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/getpobybatch/${id_batch}`,
       });
 
       res.data.data.map((dtas) => {
@@ -71,7 +70,7 @@ export default function DetailPage({ route, navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/supplier`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/supplier`,
       });
 
       res.data.data.map((dtas) => {
@@ -160,7 +159,7 @@ export default function DetailPage({ route, navigation }) {
 
       await axios({
         method: "post",
-        url: `${BASE_URL}/iventory`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/iventory`,
         headers: {
           "content-type": "multipart/form-data",
         },

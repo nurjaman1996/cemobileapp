@@ -21,7 +21,6 @@ import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import dayjs from "dayjs";
-import { BASE_URL } from "@env";
 import { FlashList } from "@shopify/flash-list";
 
 let Rupiah = new Intl.NumberFormat("id-ID", {
@@ -43,7 +42,9 @@ export default function AddPo({ route, navigation }) {
 
   async function getVariasi() {
     axios
-      .get(`${BASE_URL}/variasi/getvariasi/${dataDetails.item.id_produk}`)
+      .get(
+        `${process.env.EXPO_PUBLIC_BASE_URL}/variasi/getvariasi/${dataDetails.item.id_produk}`
+      )
       .then(function (response) {
         setdata_variasi(response.data.data);
         setModalVisible(true);
@@ -68,7 +69,7 @@ export default function AddPo({ route, navigation }) {
         <Text className="basis-2/12 text-center font-bold">
           {Numbering.format(item.stok_ready - item.stok_dipesan)}
         </Text>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             setModalVisible(!modalVisible);
             navigation.navigate("AddPurchasing", {
@@ -79,7 +80,7 @@ export default function AddPo({ route, navigation }) {
           className="basis-1/12 text-center bg-red-400 justify-center flex items-center py-2 rounded-md"
         >
           <Ionicons name={"add"} color={"white"} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }
@@ -101,7 +102,7 @@ export default function AddPo({ route, navigation }) {
           <View className="aspect-square">
             <Image
               source={{
-                uri: `${BASE_URL}/assets/img/${dataDetails.item.images}`,
+                uri: `${process.env.EXPO_PUBLIC_BASE_URL}/assets/img/${dataDetails.item.images}`,
               }}
               style={{
                 width: "100%",
@@ -241,17 +242,32 @@ export default function AddPo({ route, navigation }) {
               style={styles.modalView}
               className=" bg-cyan-300 rounded-3xl border-t border-gray-200 shadow-md"
             >
-              <View className="w-full h-[70%] px-4 pb-4 pt-2">
+              <View className="w-full h-[100%] px-4 pb-4 pt-2">
                 <View className="flex flex-row items-center justify-start mb-2 px-4">
                   <Text className="text-center text-xl font-bold">
                     VARIATIONS
                   </Text>
 
                   <TouchableOpacity
-                    onPress={() => setModalVisible(!modalVisible)}
-                    className="ml-auto px-3 py-2 rounded-md"
+                    onPress={() => {
+                      setModalVisible(!modalVisible);
+                      navigation.navigate("AddPurchasing", {
+                        dataDetails: dataDetails.item,
+                        item: data_variasi,
+                      });
+                    }}
+                    className="ml-auto bg-red-600 px-3 py-2 rounded-md"
                   >
-                    <Text className="text-blue-500 underline font-bold text-center text-sm">
+                    <Text className="text-white font-bold text-center text-sm">
+                      Edit Variations
+                    </Text>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    onPress={() => setModalVisible(!modalVisible)}
+                    className="ml-2 bg-black px-3 py-2 rounded-md"
+                  >
+                    <Text className="text-white font-bold text-center text-sm">
                       Back
                     </Text>
                   </TouchableOpacity>
@@ -358,9 +374,9 @@ export default function AddPo({ route, navigation }) {
                       <Text className="basis-2/12 text-center text-xs">
                         SISA
                       </Text>
-                      <Text className="basis-1/12 text-center text-xs">
+                      {/* <Text className="basis-1/12 text-center text-xs">
                         ACT
-                      </Text>
+                      </Text> */}
                     </View>
                     <View
                       style={{
@@ -379,7 +395,7 @@ export default function AddPo({ route, navigation }) {
                   </>
                 )}
               </View>
-
+              {/* 
               <View className="w-full flex-row space-x-2 justify-center px-4">
                 <TouchableOpacity
                   onPress={() => {
@@ -410,7 +426,7 @@ export default function AddPo({ route, navigation }) {
                     Add New Variations
                   </Text>
                 </TouchableOpacity>
-              </View>
+              </View> */}
             </View>
           </View>
         </Modal>

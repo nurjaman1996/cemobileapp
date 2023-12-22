@@ -19,7 +19,6 @@ import { useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DropDownPicker from "react-native-dropdown-picker";
-import { BASE_URL } from "@env";
 import { FlashList } from "@shopify/flash-list";
 
 let Rupiah = new Intl.NumberFormat("id-ID", {
@@ -47,7 +46,7 @@ export default function IventoryScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/getbatch`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/getbatch`,
       });
 
       res.data.data.map((dtas) => {
@@ -93,7 +92,7 @@ export default function IventoryScreen({ navigation }) {
   async function getDataProduct(data_batch) {
     try {
       const res = await axios.get(
-        `${BASE_URL}/iventory?id_batch=${data_batch}`
+        `${process.env.EXPO_PUBLIC_BASE_URL}/iventory?id_batch=${data_batch}`
       );
 
       setdataProduct(res.data.data);
@@ -131,7 +130,7 @@ export default function IventoryScreen({ navigation }) {
           <View className="w-full aspect-square border-gray-200 border-b">
             <Image
               source={{
-                uri: `${BASE_URL}/assets/img/${item.images}`,
+                uri: `${process.env.EXPO_PUBLIC_BASE_URL}/assets/img/${item.images}`,
               }}
               style={{
                 width: "100%",

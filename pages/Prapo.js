@@ -20,7 +20,6 @@ import { useFocusEffect } from "@react-navigation/native";
 import axios from "axios";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import DropDownPicker from "react-native-dropdown-picker";
-import { BASE_URL } from "@env";
 
 let Rupiah = new Intl.NumberFormat("id-ID", {
   style: "currency",
@@ -57,7 +56,7 @@ export default function PrapoScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/getbatch`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/getbatch`,
       });
 
       res.data.data.map((dtas) => {
@@ -99,7 +98,7 @@ export default function PrapoScreen({ navigation }) {
     try {
       const res = await axios({
         method: "get",
-        url: `${BASE_URL}/purchaseorder/getpobybatch/${id_batch}`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/getpobybatch/${id_batch}`,
       }).catch(function (error) {
         // handle error
         console.log(error);
@@ -119,7 +118,7 @@ export default function PrapoScreen({ navigation }) {
     try {
       await axios({
         method: "delete",
-        url: `${BASE_URL}/purchaseorder/deletepo/${id_batch}/${id_po}`,
+        url: `${process.env.EXPO_PUBLIC_BASE_URL}/purchaseorder/deletepo/${id_batch}/${id_po}`,
       });
 
       getDataBatch();
