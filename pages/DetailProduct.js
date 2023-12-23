@@ -39,7 +39,7 @@ export default function AddPo({ route, navigation }) {
       headerRight: () => (
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("EditProduk", {
+            navigation.push("EditProduk", {
               data: dataDetails.item,
             });
           }}

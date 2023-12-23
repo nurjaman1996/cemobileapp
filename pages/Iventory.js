@@ -133,7 +133,7 @@ export default function IventoryScreen({ navigation }) {
             item,
           })
         }
-        className="my-1 px-2"
+        className="my-1 px-2 w-full"
       >
         <View className="border bg-white border-gray-200 rounded-md">
           <View className="w-full aspect-square border-gray-200 border-b">
@@ -151,7 +151,7 @@ export default function IventoryScreen({ navigation }) {
             />
           </View>
 
-          <View className="px-2 bg-gray-50 shadow-md">
+          <View className="px-2 bg-gray-50">
             <View className="h-4 mt-1.5 justify-start">
               <Text
                 numberOfLines={2}
@@ -195,7 +195,7 @@ export default function IventoryScreen({ navigation }) {
               </Text>
             </Text> */}
 
-            <View className="text-xs flex flex-row gap-2">
+            <View className="text-xs flex flex-row">
               <View className="text-black flex flex-row text-xs ml-auto">
                 <Text className="basis-1/2 font-medium text-xs">Order</Text>
               </View>
@@ -210,7 +210,7 @@ export default function IventoryScreen({ navigation }) {
               </View>
             </View>
 
-            <View className="text-xs flex flex-row gap-2">
+            <View className="text-xs flex flex-row">
               <View className="text-black flex flex-row text-xs ml-auto">
                 <Text className="basis-1/2 font-medium text-xs  text-green-500">
                   Available
@@ -227,7 +227,7 @@ export default function IventoryScreen({ navigation }) {
               </View>
             </View>
 
-            <View className="text-xs flex flex-row gap-2">
+            <View className="text-xs flex flex-row">
               <View className="text-black flex flex-row text-xs ml-auto">
                 <Text className="basis-1/2 font-medium text-xs  text-red-600">
                   Unfulfilled
@@ -328,7 +328,7 @@ export default function IventoryScreen({ navigation }) {
         <View
           style={{
             flex: 1,
-            width: Dimensions.get("screen").width,
+            width: "auto",
             paddingHorizontal: 8,
           }}
         >
