@@ -17,6 +17,9 @@ import AddSup from "./pages/AddSup";
 import AddBatch from "./pages/AddBatch";
 import DetailProduct from "./pages/DetailProduct";
 import AddPurchasing from "./pages/AddPurchasing";
+import EditBatch from "./pages/EditBatch";
+import EditPo from "./pages/EditPo";
+import EditProduk from "./pages/EditProduk";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -141,6 +144,9 @@ export default function App() {
         <Stack.Screen name="AddBatch" component={AddBatch} />
         <Stack.Screen name="DetailProduct" component={DetailProduct} />
         <Stack.Screen name="AddPurchasing" component={AddPurchasing} />
+        <Stack.Screen name="EditBatch" component={EditBatch} />
+        <Stack.Screen name="EditPo" component={EditPo} />
+        <Stack.Screen name="EditProduk" component={EditProduk} />
       </Stack.Navigator>
     </NavigationContainer>
   );

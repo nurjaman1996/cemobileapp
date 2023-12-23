@@ -159,7 +159,11 @@ export default function PrapoScreen({ navigation }) {
                   },
                   {
                     text: "Edit",
-                    onPress: () => deleteBatch(item.id_batch, item.id_po),
+                    onPress: () => {
+                      navigation.navigate("EditPo", {
+                        data: item,
+                      });
+                    },
                   },
                 ]
               );

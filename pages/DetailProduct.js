@@ -35,7 +35,20 @@ export default function AddPo({ route, navigation }) {
   const dataDetails = route.params;
 
   React.useEffect(() => {
-    // console.log(dataDetails);
+    navigation.setOptions({
+      headerRight: () => (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("EditProduk", {
+              data: dataDetails.item,
+            });
+          }}
+          className="text-center justify-center flex items-center rounded-md"
+        >
+          <Ionicons name={"create-outline"} color={"blue"} size={30} />
+        </TouchableOpacity>
+      ),
+    });
   }, []);
   const [modalVisible, setModalVisible] = React.useState(false);
   const [data_variasi, setdata_variasi] = React.useState([]);

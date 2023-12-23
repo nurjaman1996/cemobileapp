@@ -93,7 +93,14 @@ export default function BatchScreen({ navigation }) {
                   {
                     text: "Cancel",
                   },
-                  { text: "Edit", onPress: () => deleteBatch(item.id_batch) },
+                  {
+                    text: "Edit",
+                    onPress: () => {
+                      navigation.navigate("EditBatch", {
+                        data: item,
+                      });
+                    },
+                  },
                 ]
               );
             }}

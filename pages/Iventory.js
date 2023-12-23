@@ -113,6 +113,15 @@ export default function IventoryScreen({ navigation }) {
     getDataBatch();
   }, []);
 
+  useFocusEffect(
+    React.useCallback(() => {
+      getDataProduct(id_batch);
+      return () => {
+        // console.log("heloo Again");
+      };
+    }, [id_batch])
+  );
+
   const [SerachQuery, setSerachQuery] = React.useState("");
 
   function itemProduct(item) {
