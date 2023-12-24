@@ -156,10 +156,9 @@ export default function AddPurchasing({ route, navigation }) {
           autoscrollToTopThreshold: 100,
         }}
         automaticallyAdjustKeyboardInsets={true}
-        className="flex-col h-full px-2 pt-5"
+        className="flex-col h-full px-2 pt-3"
       >
-        <View className="grow justify-start items-start px-2 border-b pb-3 border-gray-300">
-          <Text className="text-sm mb-1 font-bold">Details : </Text>
+        {/* <View className="grow justify-start items-start px-2 border-b pb-3 border-gray-300">
           <Text className="text-xs mb-1 font-bold">
             BATCH : {dataDetails.id_batch}
           </Text>
@@ -172,6 +171,38 @@ export default function AddPurchasing({ route, navigation }) {
           <Text className="text-xs mb-1 font-bold">
             SUPPLIER : {dataDetails.supplier}
           </Text>
+        </View> */}
+        <View className="flex flex-row mb-1 ">
+          <View className="grow ml-2">
+            <Text className="text-left font-bold">BATCH</Text>
+          </View>
+          <View className="grow mr-2">
+            <Text className="text-right font-normal">{dataDetails.id_batch}</Text>
+          </View>
+        </View>
+        <View className="flex flex-row mb-1">
+          <View className="grow ml-2">
+            <Text className="text-left font-bold">ID PO</Text>
+          </View>
+          <View className="grow mr-2">
+            <Text className="text-right font-normal">{dataDetails.id_po}</Text>
+          </View>
+        </View>
+        <View className="flex flex-row mb-1">
+          <View className="grow ml-2">
+            <Text className="text-left font-bold">ID PRODUCT</Text>
+          </View>
+          <View className="grow mr-2">
+            <Text className="text-right font-normal">{dataDetails.id_produk}</Text>
+          </View>
+        </View>
+        <View className="flex flex-row border-b border-gray-300 pb-3">
+          <View className="grow ml-2">
+            <Text className="text-left font-bold">SUPPLIER</Text>
+          </View>
+          <View className="grow mr-2">
+            <Text className="text-right font-normal">{dataDetails.supplier}</Text>
+          </View>
         </View>
         {/* <View className="grow justify-start items-start px-2">
           <Text className="text-xs mb-1 font-bold">BATCH</Text>
@@ -259,7 +290,7 @@ export default function AddPurchasing({ route, navigation }) {
         </View> */}
 
         <View className="flex flex-row px-1 pt-3 pb-3">
-          <Text className="basis-1/2 text-left font-medium pl-3">
+          <Text className="grow text-center font-bold pl-1 text-lg">
             Add New Variation
           </Text>
         </View>

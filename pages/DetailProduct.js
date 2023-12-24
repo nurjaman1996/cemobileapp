@@ -45,7 +45,7 @@ export default function AddPo({ route, navigation }) {
           }}
           className="text-center justify-center flex items-center rounded-md"
         >
-          <Ionicons name={"create-outline"} color={"blue"} size={30} />
+          <Ionicons name={"create-outline"} color={"black"} size={30} />
         </TouchableOpacity>
       ),
     });
@@ -99,7 +99,7 @@ export default function AddPo({ route, navigation }) {
   }
 
   return (
-    <SafeAreaView className="bg-white flex-1 h-full">
+    <SafeAreaView className="bbg-[#F4F4F4] flex-1 h-full">
       <ScrollView
         keyboardDismissMode="interactive"
         automaticallyAdjustContentInsets={false}
@@ -126,7 +126,7 @@ export default function AddPo({ route, navigation }) {
           </View>
         </View>
 
-        <View className="-mt-5 -mb-5 z-50 bg-green-600 w-[50%] mx-auto rounded-full p-2 flex items-center">
+        {/* <View className="-mt-5 -mb-5 z-50 bg-black w-[50%] mx-auto rounded-full p-2 flex items-center">
           <Text className="font-bold text-xl text-white">
             Available Stock{" : "}
             {Numbering.format(
@@ -135,19 +135,18 @@ export default function AddPo({ route, navigation }) {
                 : dataDetails.item.total_stok
             )}
           </Text>
-        </View>
+        </View> */}
 
-        <View className="border border-gray-300 border-b-0 pt-3 rounded-t-3xl bg-white">
+        <View className="border border-gray-300 border-b-0 pt-3 rounded-t-3xl bg-[#F4F4F4]">
           <View className="mx-4 flex-row items-center h-auto border-b border-gray-300 py-2  ">
             <View className="basis-3/4">
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"
-                className={`${
-                  dataDetails.item.produk == "null"
-                    ? "text-red-500"
-                    : "text-[#2e2e2e]"
-                } font-bold text-xl `}
+                className={`${dataDetails.item.produk == "null"
+                  ? "text-red-500"
+                  : "text-[#2e2e2e]"
+                  } font-bold text-xl `}
               >
                 {dataDetails.item.produk == "null"
                   ? "Belum ada nama"
@@ -221,7 +220,7 @@ export default function AddPo({ route, navigation }) {
             </View>
           </View>
 
-          <View className="flex flex-row px-0 mr-4 mx-4 mt-2 h-[35px] justify-center">
+          {/* <View className="flex flex-row px-0 mr-4 mx-4 mt-2 h-[35px] justify-center">
             <View className="basis-2/5 h-auto m-1 bg-black rounded-md shadow-sm ">
               <Text className="font-bold text-md text-white text-center mt-1.5">
                 Orders{" : "}
@@ -241,6 +240,60 @@ export default function AddPo({ route, navigation }) {
                     : dataDetails.item.total_permintaan
                 )}
               </Text>
+            </View>
+          </View> */}
+
+          <View className="flex flex-row mx-4 mt-2">
+            <View className="basis-full flex flex-row h-auto bg-black border border-gray-200 rounded-xl shadow-sm">
+              <View className="basis-grow">
+                <Text className="text-md font-bold p-5 text-white">
+                  AVAILABLE STOCK
+                </Text>
+              </View>
+              <View className="grow">
+                <Text className="text-md font-bold p-5 text-right text-white">
+                  {Numbering.format(
+                    dataDetails.item.total_stok === null
+                      ? 0
+                      : dataDetails.item.total_stok
+                  )}
+                </Text>
+              </View>
+            </View>
+          </View>
+
+          <View className="flex flex-row mx-4 mt-2 ">
+            <View className="grow flex flex-row h-auto bg-lime-600 border border-gray-200 rounded-xl shadow-sm mr-2">
+              <View className="grow">
+                <Text className="text-md font-bold p-5 text-white">
+                  ORDERS
+                </Text>
+              </View>
+              <View className="grow">
+                <Text className="text-MD font-bold p-5 text-right text-white">
+                  {Numbering.format(
+                    dataDetails.item.total_reserved === null
+                      ? 0
+                      : dataDetails.item.total_reserved
+                  )}
+                </Text>
+              </View>
+            </View>
+            <View className="grow flex flex-row h-auto bg-red-600 border border-gray-200 rounded-xl shadow-sm ">
+              <View className="grow">
+                <Text className="text-md font-bold p-5 text-white">
+                  UNFILLED
+                </Text>
+              </View>
+              <View className="grow">
+                <Text className="text-md font-bold p-5 text-right text-white">
+                  {Numbering.format(
+                    dataDetails.item.total_permintaan === null
+                      ? 0
+                      : dataDetails.item.total_permintaan
+                  )}
+                </Text>
+              </View>
             </View>
           </View>
         </View>

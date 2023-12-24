@@ -135,7 +135,7 @@ export default function IventoryScreen({ navigation }) {
         }
         className="my-1 px-2 w-full"
       >
-        <View className="border bg-white border-gray-200 rounded-md">
+        <View className=" bg-white rounded-2xl shadow-sm">
           <View className="w-full aspect-square border-gray-200 border-b">
             <Image
               source={{
@@ -145,20 +145,19 @@ export default function IventoryScreen({ navigation }) {
                 width: "100%",
                 height: "100%",
                 resizeMode: "contain",
-                borderTopLeftRadius: 5,
-                borderTopRightRadius: 5,
+                borderTopLeftRadius: 15,
+                borderTopRightRadius: 15,
               }}
             />
           </View>
 
-          <View className="px-2 bg-gray-50">
+          <View className="px-2 bg-gray-50 rounded-b-2xl">
             <View className="h-4 mt-1.5 justify-start">
               <Text
                 numberOfLines={2}
                 ellipsizeMode="tail"
-                className={`${
-                  item.produk == "null" ? "text-red-500" : "text-[#2e2e2e]"
-                } font-bold text-left text-md`}
+                className={`${item.produk == "null" ? "text-red-500" : "text-[#2e2e2e]"
+                  } font-bold text-left text-md`}
               >
                 {item.produk == "null" ? "Belum ada nama" : item.produk}
               </Text>
